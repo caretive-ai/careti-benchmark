@@ -10,6 +10,20 @@
 
 **[View Benchmark Results](https://careti.ai/en/benchmark)**
 
+## Quick Start
+
+```bash
+# Clone repository
+git clone https://github.com/caretive-ai/careti-benchmark.git
+cd careti-benchmark
+
+# Verify data integrity
+python3 scripts/verify-data.py
+
+# Example usage
+python3 scripts/example-usage.py
+```
+
 ## Why This Benchmark?
 
 ### Limitations of Existing Benchmarks
@@ -33,7 +47,7 @@ Careti:      Problem → Agent → Code → Test → [Error Feedback] → Retry 
 
 | Rank | Model | 1st Pass | Final Pass | Avg Attempts | Cost |
 |------|-------|----------|------------|--------------|------|
-| #1 | Gemini 2.5 Flash | 62-67% | **98%** | 1.36-1.44 | $0.09-0.13 |
+| #1 | Gemini 2.5 Flash | 70-92% | **98%** | 1.11-1.44 | $0.05-0.13 |
 | #2 | GLM-4.7 | 89-92% | **97-98%** | 1.11-1.15 | $0.18 |
 | #3 | Gemini 3 Pro (Preview) | 66-67% | **92-93%** | 1.53-1.57 | $0.60 |
 | #4 | Solar Pro2 | 61-64% | **81-86%** | 1.82-1.87 | $0.75-0.87 |
@@ -67,34 +81,65 @@ The `results/` directory contains full benchmark data in JSON format.
 
 ```json
 {
-  "problem_id": "he000-has_close_elements",
+  "problem_id": "h01-longest-substring",
   "model": "Gemini 2.5 Flash",
   "success": true,
-  "attempts": 1,
-  "first_attempt_success": true,
-  "total_time_ms": 5348,
-  "cost_usd": 0.00018,
-  "input_tokens": 161,
-  "output_tokens": 264,
+  "attempts": 2,
+  "first_attempt_success": false,
+  "total_time_ms": 9599,
+  "cost_usd": 0.00094,
+  "input_tokens": 4330,
+  "output_tokens": 484,
   "prompt_mode": "careti",
   "termination_reason": "success",
-  "attempt_history": [...]
+  "attempt_history": [
+    {
+      "attempt": 1,
+      "success": false,
+      "latency_ms": 6229,
+      "error": "SyntaxError: invalid syntax"
+    },
+    {
+      "attempt": 2,
+      "success": true,
+      "latency_ms": 3370
+    }
+  ]
 }
 ```
 
 ### Looking Up Original Problems
 
-HumanEval problems can be retrieved from the Hugging Face dataset:
+Hard Suite problems are included in `problems/hard-suite.json`:
 
 ```python
-from datasets import load_dataset
+import json
+import urllib.request
 
-ds = load_dataset("openai/openai_humaneval")
-problem = ds["test"][0]  # he000 → problem 0
+# Download problems
+url = "https://raw.githubusercontent.com/caretive-ai/careti-benchmark/main/problems/hard-suite.json"
+problems = json.loads(urllib.request.urlopen(url).read())
+
+# Find problem by ID
+problem = next(p for p in problems if p["id"] == "h01-longest-substring")
 print(problem["prompt"])
+print(problem["test_code"])
 ```
 
-**Hugging Face**: [openai/openai_humaneval](https://huggingface.co/datasets/openai/openai_humaneval)
+## Files
+
+```
+problems/
+  hard-suite.json       # 100 problems with prompts and test code
+
+results/2026-02-hard-suite/
+  results.json          # 2100 individual test results
+  summary.json          # Aggregated stats per model
+
+scripts/
+  verify-data.py        # Data integrity verification
+  example-usage.py      # Example analysis scripts
+```
 
 ## License
 
