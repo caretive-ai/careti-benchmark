@@ -518,5 +518,17 @@
       "oscillation": 0,
       "same_error": 100
     }
+  },
+  {
+    "suite_name": "hard",
+    "model": "Gemini 2.5 Flash [careti] #4",
+    "total_problems": 100,
+    "passed": 98,
+    "pass_rate": 98,
+    "first_attempt_pass_rate": 92,
+    "first_attempt_avg_latency_ms": 17615.065217391304,
+    "total_cost_usd": 0.04967205,
+    "total_time_ms": 2322246,
+    "prompt_mode": "careti"
   }
 ]
