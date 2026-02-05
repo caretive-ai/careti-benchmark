@@ -1,0 +1,1315 @@
+[
+  {
+    "id": "h01-longest-substring",
+    "name": "Longest Substring Without Repeating",
+    "category": "code-generation",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "sliding-window",
+      "hash-set"
+    ],
+    "prompt": "Write a Python function called length_of_longest_substring(s) that returns the length of the longest substring without repeating characters.\n\nExample:\n- \"abcabcbb\" → 3 (\"abc\")\n- \"bbbbb\" → 1 (\"b\")\n- \"pwwkew\" → 3 (\"wke\")\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert length_of_longest_substring(\"abcabcbb\") == 3\n    assert length_of_longest_substring(\"bbbbb\") == 1\n    assert length_of_longest_substring(\"pwwkew\") == 3\n    assert length_of_longest_substring(\"\") == 0\n    assert length_of_longest_substring(\" \") == 1\n    assert length_of_longest_substring(\"au\") == 2\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h02-merge-intervals",
+    "name": "Merge Intervals",
+    "category": "code-generation",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "arrays",
+      "sorting"
+    ],
+    "prompt": "Write a Python function called merge_intervals(intervals) that merges all overlapping intervals.\n\nInput: list of [start, end] intervals\nOutput: list of merged non-overlapping intervals\n\nExample: [[1,3],[2,6],[8,10],[15,18]] → [[1,6],[8,10],[15,18]]\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert merge_intervals([[1,3],[2,6],[8,10],[15,18]]) == [[1,6],[8,10],[15,18]]\n    assert merge_intervals([[1,4],[4,5]]) == [[1,5]]\n    assert merge_intervals([[1,4],[0,4]]) == [[0,4]]\n    assert merge_intervals([]) == []\n    assert merge_intervals([[1,4],[2,3]]) == [[1,4]]\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h03-word-break",
+    "name": "Word Break",
+    "category": "code-generation",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "dynamic-programming",
+      "strings"
+    ],
+    "prompt": "Write a Python function called word_break(s, word_dict) that returns True if string s can be segmented into space-separated words from word_dict.\n\nExample:\n- word_break(\"leetcode\", [\"leet\", \"code\"]) → True\n- word_break(\"applepenapple\", [\"apple\", \"pen\"]) → True\n- word_break(\"catsandog\", [\"cats\", \"dog\", \"sand\", \"and\", \"cat\"]) → False\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert word_break(\"leetcode\", [\"leet\", \"code\"]) == True\n    assert word_break(\"applepenapple\", [\"apple\", \"pen\"]) == True\n    assert word_break(\"catsandog\", [\"cats\", \"dog\", \"sand\", \"and\", \"cat\"]) == False\n    assert word_break(\"\", [\"a\"]) == True\n    assert word_break(\"a\", [\"a\"]) == True\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h04-serialize-tree",
+    "name": "Serialize Binary Tree",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "tree",
+      "design"
+    ],
+    "prompt": "Implement serialize and deserialize functions for a binary tree.\n\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef serialize(root: TreeNode) -> str:\n    # Convert tree to string\n\ndef deserialize(data: str) -> TreeNode:\n    # Convert string back to tree\n\nThe serialized string should be able to reconstruct the exact same tree.\n\nReturn ONLY the TreeNode class and both functions, no explanations.",
+    "test_code": "\ndef test():\n    # Test 1: [1,2,3,null,null,4,5]\n    root = TreeNode(1, TreeNode(2), TreeNode(3, TreeNode(4), TreeNode(5)))\n    s = serialize(root)\n    new_root = deserialize(s)\n    assert new_root.val == 1\n    assert new_root.left.val == 2\n    assert new_root.right.val == 3\n    assert new_root.right.left.val == 4\n    assert new_root.right.right.val == 5\n\n    # Test 2: empty tree\n    assert deserialize(serialize(None)) is None\n\n    # Test 3: single node\n    single = TreeNode(42)\n    assert deserialize(serialize(single)).val == 42\n\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h05-median-stream",
+    "name": "Find Median from Data Stream",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "heap",
+      "design"
+    ],
+    "prompt": "Implement MedianFinder class that supports:\n- addNum(num): Add integer from stream\n- findMedian(): Return median of all elements so far\n\nThe median is the middle value (or average of two middle values if even count).\n\nclass MedianFinder:\n    def __init__(self):\n        pass\n    def addNum(self, num: int) -> None:\n        pass\n    def findMedian(self) -> float:\n        pass\n\nReturn ONLY the class code, no explanations.",
+    "test_code": "\ndef test():\n    mf = MedianFinder()\n    mf.addNum(1)\n    mf.addNum(2)\n    assert mf.findMedian() == 1.5\n    mf.addNum(3)\n    assert mf.findMedian() == 2.0\n    mf.addNum(4)\n    assert mf.findMedian() == 2.5\n    mf.addNum(5)\n    assert mf.findMedian() == 3.0\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h06-json-parser",
+    "name": "Simple JSON Parser",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "parsing",
+      "recursion"
+    ],
+    "prompt": "Write a Python function called parse_json(s) that parses a JSON string and returns the corresponding Python object.\n\nSupport: strings, numbers (int/float), booleans (true/false), null, arrays, objects.\nDo NOT use the json module.\n\nExample:\n- '{\"name\": \"John\", \"age\": 30}' → {\"name\": \"John\", \"age\": 30}\n- '[1, 2, 3]' → [1, 2, 3]\n- 'true' → True\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert parse_json('123') == 123\n    assert parse_json('\"hello\"') == \"hello\"\n    assert parse_json('true') == True\n    assert parse_json('false') == False\n    assert parse_json('null') == None\n    assert parse_json('[1, 2, 3]') == [1, 2, 3]\n    assert parse_json('{\"a\": 1, \"b\": 2}') == {\"a\": 1, \"b\": 2}\n    assert parse_json('{\"nested\": {\"x\": [1, 2]}}') == {\"nested\": {\"x\": [1, 2]}}\n    assert parse_json('3.14') == 3.14\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h07-rate-limiter",
+    "name": "Rate Limiter (Token Bucket)",
+    "category": "code-generation",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "design",
+      "algorithms"
+    ],
+    "prompt": "Implement a token bucket rate limiter:\n\nclass RateLimiter:\n    def __init__(self, capacity: int, refill_rate: float):\n        # capacity: max tokens\n        # refill_rate: tokens added per second\n        pass\n\n    def allow_request(self, timestamp: float) -> bool:\n        # Return True if request allowed (consume 1 token), False otherwise\n        pass\n\nThe bucket refills continuously over time (not discrete intervals).\n\nReturn ONLY the class code, no explanations.",
+    "test_code": "\ndef test():\n    rl = RateLimiter(capacity=5, refill_rate=1.0)  # 5 max, 1 token/sec\n\n    # Use all 5 tokens instantly at t=0\n    for _ in range(5):\n        assert rl.allow_request(0.0) == True\n\n    # 6th request at t=0 should fail\n    assert rl.allow_request(0.0) == False\n\n    # After 1 second, should have 1 token\n    assert rl.allow_request(1.0) == True\n    assert rl.allow_request(1.0) == False\n\n    # After 10 seconds total, should be full again (5 tokens)\n    assert rl.allow_request(10.0) == True\n\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h08-trie-autocomplete",
+    "name": "Trie with Autocomplete",
+    "category": "code-generation",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "trie",
+      "design"
+    ],
+    "prompt": "Implement a Trie with autocomplete functionality:\n\nclass Trie:\n    def __init__(self):\n        pass\n\n    def insert(self, word: str) -> None:\n        pass\n\n    def search(self, word: str) -> bool:\n        # Return True if exact word exists\n        pass\n\n    def autocomplete(self, prefix: str) -> list:\n        # Return all words starting with prefix (sorted)\n        pass\n\nReturn ONLY the class code, no explanations.",
+    "test_code": "\ndef test():\n    trie = Trie()\n    trie.insert(\"apple\")\n    trie.insert(\"app\")\n    trie.insert(\"application\")\n    trie.insert(\"banana\")\n\n    assert trie.search(\"app\") == True\n    assert trie.search(\"ap\") == False\n    assert trie.search(\"apple\") == True\n\n    assert trie.autocomplete(\"app\") == [\"app\", \"apple\", \"application\"]\n    assert trie.autocomplete(\"ban\") == [\"banana\"]\n    assert trie.autocomplete(\"xyz\") == []\n\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h09-debug-quicksort",
+    "name": "Debug QuickSort",
+    "category": "debugging",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "debugging",
+      "sorting"
+    ],
+    "prompt": "Fix the bugs in this quicksort implementation:\n\ndef quicksort(arr):\n    if len(arr) <= 1:\n        return arr\n    pivot = arr[0]\n    left = [x for x in arr if x < pivot]\n    right = [x for x in arr if x > pivot]  # Bug: missing equal elements\n    return quicksort(left) + [pivot] + quicksort(right)\n\nThe current implementation loses duplicate elements.\n\nReturn ONLY the corrected function code, no explanations.",
+    "test_code": "\ndef test():\n    assert quicksort([3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]) == [1, 1, 2, 3, 3, 4, 5, 5, 5, 6, 9]\n    assert quicksort([]) == []\n    assert quicksort([1]) == [1]\n    assert quicksort([2, 2, 2]) == [2, 2, 2]\n    assert quicksort([3, 2, 1]) == [1, 2, 3]\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h10-debug-bfs",
+    "name": "Debug BFS Shortest Path",
+    "category": "debugging",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "debugging",
+      "graph"
+    ],
+    "prompt": "Fix the bugs in this BFS shortest path implementation:\n\ndef shortest_path(graph, start, end):\n    from collections import deque\n    queue = deque([start])\n    visited = set()\n    distance = {start: 0}\n\n    while queue:\n        node = queue.popleft()\n        if node == end:\n            return distance[node]\n\n        for neighbor in graph[node]:\n            if neighbor not in visited:\n                queue.append(neighbor)\n                distance[neighbor] = distance[node] + 1\n\n    return -1  # Not found\n\nBug: The visited set is never updated, causing infinite loops.\nAlso: Need to mark visited when adding to queue, not when processing.\n\nReturn ONLY the corrected function code, no explanations.",
+    "test_code": "\ndef test():\n    graph = {\n        'A': ['B', 'C'],\n        'B': ['A', 'D', 'E'],\n        'C': ['A', 'F'],\n        'D': ['B'],\n        'E': ['B', 'F'],\n        'F': ['C', 'E']\n    }\n    assert shortest_path(graph, 'A', 'F') == 2\n    assert shortest_path(graph, 'A', 'D') == 2\n    assert shortest_path(graph, 'A', 'A') == 0\n\n    # Disconnected\n    graph2 = {'A': ['B'], 'B': ['A'], 'C': []}\n    assert shortest_path(graph2, 'A', 'C') == -1\n\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h11-regex-matching",
+    "name": "Regex Matching (. and *)",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "dynamic-programming",
+      "strings"
+    ],
+    "prompt": "Implement regex matching with '.' and '*':\n- '.' matches any single character\n- '*' matches zero or more of the preceding element\n\ndef is_match(s: str, p: str) -> bool:\n    # s: input string\n    # p: pattern\n\nExample:\n- is_match(\"aa\", \"a\") → False\n- is_match(\"aa\", \"a*\") → True\n- is_match(\"ab\", \".*\") → True\n- is_match(\"aab\", \"c*a*b\") → True\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert is_match(\"aa\", \"a\") == False\n    assert is_match(\"aa\", \"a*\") == True\n    assert is_match(\"ab\", \".*\") == True\n    assert is_match(\"aab\", \"c*a*b\") == True\n    assert is_match(\"mississippi\", \"mis*is*p*.\") == False\n    assert is_match(\"\", \".*\") == True\n    assert is_match(\"\", \"\") == True\n    assert is_match(\"a\", \"\") == False\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h12-alien-dictionary",
+    "name": "Alien Dictionary",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "topological-sort",
+      "graph"
+    ],
+    "prompt": "Given a sorted list of words in an alien language, derive the order of characters.\n\ndef alien_order(words: list) -> str:\n    # Return characters in sorted order, or \"\" if invalid\n\nExample:\n- [\"wrt\", \"wrf\", \"er\", \"ett\", \"rftt\"] → \"wertf\"\n- [\"z\", \"x\"] → \"zx\"\n- [\"z\", \"x\", \"z\"] → \"\" (invalid, z cannot come before and after x)\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    result = alien_order([\"wrt\", \"wrf\", \"er\", \"ett\", \"rftt\"])\n    # Valid orderings: \"wertf\" or similar topological sorts\n    assert 'w' in result and 'e' in result and 'r' in result\n    assert result.index('t') < result.index('f')\n    assert result.index('w') < result.index('e')\n    assert result.index('e') < result.index('r')\n\n    assert alien_order([\"z\", \"x\"]) == \"zx\"\n    assert alien_order([\"z\", \"x\", \"z\"]) == \"\"  # Invalid\n\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h13-lcs-three",
+    "name": "Longest Common Subsequence (3 strings)",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "dynamic-programming"
+    ],
+    "prompt": "Find the longest common subsequence of THREE strings.\n\ndef lcs3(s1: str, s2: str, s3: str) -> int:\n    # Return length of LCS\n\nExample:\n- lcs3(\"abcd\", \"ebcd\", \"fbcd\") → 3 (\"bcd\")\n- lcs3(\"abc\", \"def\", \"ghi\") → 0\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert lcs3(\"abcd\", \"ebcd\", \"fbcd\") == 3\n    assert lcs3(\"abc\", \"def\", \"ghi\") == 0\n    assert lcs3(\"abc\", \"abc\", \"abc\") == 3\n    assert lcs3(\"\", \"abc\", \"abc\") == 0\n    assert lcs3(\"abcdef\", \"acef\", \"aef\") == 3\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h14-thread-safe-counter",
+    "name": "Thread-Safe Counter",
+    "category": "code-generation",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "concurrency",
+      "design"
+    ],
+    "prompt": "Implement a thread-safe counter that can handle concurrent increments:\n\nimport threading\n\nclass ThreadSafeCounter:\n    def __init__(self):\n        pass\n\n    def increment(self) -> None:\n        pass\n\n    def get_value(self) -> int:\n        pass\n\nThe counter must correctly handle multiple threads incrementing simultaneously.\n\nReturn ONLY the class code (with the threading import), no explanations.",
+    "test_code": "\nimport threading\n\ndef test():\n    counter = ThreadSafeCounter()\n    threads = []\n\n    def increment_many():\n        for _ in range(1000):\n            counter.increment()\n\n    # Create 10 threads, each incrementing 1000 times\n    for _ in range(10):\n        t = threading.Thread(target=increment_many)\n        threads.append(t)\n        t.start()\n\n    for t in threads:\n        t.join()\n\n    # Should be exactly 10000\n    assert counter.get_value() == 10000, f\"Expected 10000, got {counter.get_value()}\"\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h15-evaluate-rpn",
+    "name": "Evaluate Reverse Polish Notation",
+    "category": "code-generation",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "stack",
+      "math"
+    ],
+    "prompt": "Evaluate an expression in Reverse Polish Notation.\n\ndef eval_rpn(tokens: list) -> int:\n    # tokens: list of strings (numbers and operators +, -, *, /)\n    # Division truncates toward zero\n\nExample:\n- [\"2\", \"1\", \"+\", \"3\", \"*\"] → 9 ((2+1)*3)\n- [\"4\", \"13\", \"5\", \"/\", \"+\"] → 6 (4+(13/5))\n- [\"10\", \"6\", \"9\", \"3\", \"+\", \"-11\", \"*\", \"/\", \"*\", \"17\", \"+\", \"5\", \"+\"] → 22\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert eval_rpn([\"2\", \"1\", \"+\", \"3\", \"*\"]) == 9\n    assert eval_rpn([\"4\", \"13\", \"5\", \"/\", \"+\"]) == 6\n    assert eval_rpn([\"10\", \"6\", \"9\", \"3\", \"+\", \"-11\", \"*\", \"/\", \"*\", \"17\", \"+\", \"5\", \"+\"]) == 22\n    assert eval_rpn([\"3\", \"4\", \"-\"]) == -1\n    assert eval_rpn([\"18\"]) == 18\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h16-minimum-window",
+    "name": "Minimum Window Substring",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "sliding-window",
+      "hash-map"
+    ],
+    "prompt": "Find the minimum window substring of s that contains all characters of t.\n\ndef min_window(s: str, t: str) -> str:\n    # Return \"\" if no such window exists\n\nExample:\n- min_window(\"ADOBECODEBANC\", \"ABC\") → \"BANC\"\n- min_window(\"a\", \"a\") → \"a\"\n- min_window(\"a\", \"aa\") → \"\"\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert min_window(\"ADOBECODEBANC\", \"ABC\") == \"BANC\"\n    assert min_window(\"a\", \"a\") == \"a\"\n    assert min_window(\"a\", \"aa\") == \"\"\n    assert min_window(\"ab\", \"b\") == \"b\"\n    assert min_window(\"\", \"a\") == \"\"\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h17-course-schedule",
+    "name": "Course Schedule II (Topological Sort)",
+    "category": "code-generation",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "graph",
+      "topological-sort"
+    ],
+    "prompt": "Return the ordering of courses to finish all courses given prerequisites.\n\ndef find_order(num_courses: int, prerequisites: list) -> list:\n    # prerequisites[i] = [a, b] means: must take b before a\n    # Return [] if impossible (cycle exists)\n\nExample:\n- find_order(4, [[1,0],[2,0],[3,1],[3,2]]) → [0,1,2,3] or [0,2,1,3]\n- find_order(2, [[1,0],[0,1]]) → [] (cycle)\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    result = find_order(4, [[1,0],[2,0],[3,1],[3,2]])\n    assert len(result) == 4\n    assert result.index(0) < result.index(1)\n    assert result.index(0) < result.index(2)\n    assert result.index(1) < result.index(3)\n    assert result.index(2) < result.index(3)\n\n    assert find_order(2, [[1,0],[0,1]]) == []\n    assert find_order(1, []) == [0]\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h18-number-islands",
+    "name": "Number of Islands",
+    "category": "code-generation",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "graph",
+      "dfs",
+      "bfs"
+    ],
+    "prompt": "Count the number of islands in a 2D grid.\n\ndef num_islands(grid: list) -> int:\n    # grid[i][j] = '1' (land) or '0' (water)\n    # An island is surrounded by water and connected horizontally/vertically\n\nExample:\ngrid = [\n  [\"1\",\"1\",\"0\",\"0\",\"0\"],\n  [\"1\",\"1\",\"0\",\"0\",\"0\"],\n  [\"0\",\"0\",\"1\",\"0\",\"0\"],\n  [\"0\",\"0\",\"0\",\"1\",\"1\"]\n]\n→ 3 islands\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    grid1 = [\n        [\"1\",\"1\",\"0\",\"0\",\"0\"],\n        [\"1\",\"1\",\"0\",\"0\",\"0\"],\n        [\"0\",\"0\",\"1\",\"0\",\"0\"],\n        [\"0\",\"0\",\"0\",\"1\",\"1\"]\n    ]\n    assert num_islands(grid1) == 3\n\n    grid2 = [[\"1\",\"1\",\"1\"],[\"0\",\"1\",\"0\"],[\"1\",\"1\",\"1\"]]\n    assert num_islands(grid2) == 1\n\n    assert num_islands([[\"0\"]]) == 0\n    assert num_islands([[\"1\"]]) == 1\n    assert num_islands([]) == 0\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h19-lru-cache-v2",
+    "name": "LRU Cache with TTL",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "design",
+      "data-structure"
+    ],
+    "prompt": "Implement an LRU cache with Time-To-Live (TTL) support.\n\nclass LRUCacheWithTTL:\n    def __init__(self, capacity: int, default_ttl: float):\n        # capacity: max items\n        # default_ttl: seconds until expiration\n        pass\n\n    def get(self, key: str, current_time: float) -> int:\n        # Return value if exists and not expired, else -1\n        pass\n\n    def put(self, key: str, value: int, current_time: float) -> None:\n        # Insert/update with TTL starting from current_time\n        pass\n\nItems expire after default_ttl seconds. Expired items should be treated as non-existent.\n\nReturn ONLY the class code, no explanations.",
+    "test_code": "\ndef test():\n    cache = LRUCacheWithTTL(capacity=2, default_ttl=10.0)\n\n    cache.put(\"a\", 1, 0.0)\n    cache.put(\"b\", 2, 0.0)\n    assert cache.get(\"a\", 5.0) == 1  # Not expired\n    assert cache.get(\"a\", 15.0) == -1  # Expired\n\n    cache.put(\"c\", 3, 5.0)\n    assert cache.get(\"b\", 6.0) == -1  # Evicted (LRU)\n    assert cache.get(\"c\", 14.0) == 3  # Not expired\n    assert cache.get(\"c\", 16.0) == -1  # Expired\n\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h20-skyline",
+    "name": "The Skyline Problem",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "heap",
+      "divide-conquer"
+    ],
+    "prompt": "Compute the skyline formed by a set of buildings.\n\ndef get_skyline(buildings: list) -> list:\n    # buildings[i] = [left, right, height]\n    # Return list of [x, height] key points\n\nExample:\nbuildings = [[2,9,10],[3,7,15],[5,12,12],[15,20,10],[19,24,8]]\n→ [[2,10],[3,15],[7,12],[12,0],[15,10],[20,8],[24,0]]\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    result = get_skyline([[2,9,10],[3,7,15],[5,12,12],[15,20,10],[19,24,8]])\n    expected = [[2,10],[3,15],[7,12],[12,0],[15,10],[20,8],[24,0]]\n    assert result == expected\n\n    assert get_skyline([[0,2,3],[2,5,3]]) == [[0,3],[5,0]]\n    assert get_skyline([]) == []\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h21-kth-largest-stream",
+    "name": "Kth Largest Element in Stream",
+    "category": "code-generation",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "heap",
+      "design"
+    ],
+    "prompt": "Design a class to find the kth largest element in a stream.\n\nclass KthLargest:\n    def __init__(self, k: int, nums: list):\n        pass\n\n    def add(self, val: int) -> int:\n        # Add val to stream, return kth largest\n        pass\n\nExample:\nkth = KthLargest(3, [4,5,8,2])\nkth.add(3) → 4  (stream: [2,3,4,5,8], 3rd largest = 4)\nkth.add(5) → 5  (stream: [2,3,4,5,5,8], 3rd largest = 5)\nkth.add(10) → 5  (stream: [2,3,4,5,5,8,10], 3rd largest = 5)\n\nReturn ONLY the class code, no explanations.",
+    "test_code": "\ndef test():\n    kth = KthLargest(3, [4,5,8,2])\n    assert kth.add(3) == 4\n    assert kth.add(5) == 5\n    assert kth.add(10) == 5\n    assert kth.add(9) == 8\n    assert kth.add(4) == 8\n\n    kth2 = KthLargest(1, [])\n    assert kth2.add(-3) == -3\n    assert kth2.add(-2) == -2\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h22-graph-clone",
+    "name": "Clone Graph (Deep Copy)",
+    "category": "code-generation",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "graph",
+      "dfs",
+      "bfs"
+    ],
+    "prompt": "Create a deep copy of a connected undirected graph.\n\nclass Node:\n    def __init__(self, val=0, neighbors=None):\n        self.val = val\n        self.neighbors = neighbors if neighbors else []\n\ndef clone_graph(node: Node) -> Node:\n    # Return deep copy of the graph\n    # Return None if input is None\n\nThe graph is represented by a node reference. Each node's value is unique.\n\nReturn ONLY the Node class and the function code, no explanations.",
+    "test_code": "\ndef test():\n    # Build graph: 1 -- 2\n    #              |    |\n    #              4 -- 3\n    n1, n2, n3, n4 = Node(1), Node(2), Node(3), Node(4)\n    n1.neighbors = [n2, n4]\n    n2.neighbors = [n1, n3]\n    n3.neighbors = [n2, n4]\n    n4.neighbors = [n1, n3]\n\n    clone = clone_graph(n1)\n\n    assert clone is not n1\n    assert clone.val == 1\n    assert len(clone.neighbors) == 2\n    assert clone.neighbors[0] is not n2\n    assert clone.neighbors[0].val == 2\n\n    assert clone_graph(None) is None\n\n    single = Node(1)\n    clone_single = clone_graph(single)\n    assert clone_single is not single\n    assert clone_single.val == 1\n\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h23-candy-distribution",
+    "name": "Candy Distribution",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "greedy",
+      "arrays"
+    ],
+    "prompt": "Distribute minimum candies to children based on ratings.\n\ndef candy(ratings: list) -> int:\n    # Each child must have at least 1 candy\n    # Higher rating child gets more candy than neighbors\n    # Return minimum total candies\n\nExample:\n- candy([1,0,2]) → 5 (candies: [2,1,2])\n- candy([1,2,2]) → 4 (candies: [1,2,1])\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert candy([1,0,2]) == 5\n    assert candy([1,2,2]) == 4\n    assert candy([1,3,2,2,1]) == 7\n    assert candy([1]) == 1\n    assert candy([1,2,3,4,5]) == 15\n    assert candy([5,4,3,2,1]) == 15\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h24-trap-rain-water",
+    "name": "Trapping Rain Water",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "two-pointers",
+      "stack",
+      "dynamic-programming"
+    ],
+    "prompt": "Calculate how much water can be trapped after rain.\n\ndef trap(height: list) -> int:\n    # height[i] = elevation at index i\n    # Return total water trapped\n\nExample:\n- trap([0,1,0,2,1,0,1,3,2,1,2,1]) → 6\n- trap([4,2,0,3,2,5]) → 9\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert trap([0,1,0,2,1,0,1,3,2,1,2,1]) == 6\n    assert trap([4,2,0,3,2,5]) == 9\n    assert trap([]) == 0\n    assert trap([1]) == 0\n    assert trap([1,2]) == 0\n    assert trap([2,0,2]) == 2\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h25-sudoku-solver",
+    "name": "Sudoku Solver",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "backtracking",
+      "recursion"
+    ],
+    "prompt": "Solve a Sudoku puzzle by filling the empty cells.\n\ndef solve_sudoku(board: list) -> None:\n    # board is 9x9 list of strings\n    # '.' represents empty cell\n    # Modify board in-place to solve\n\nRules:\n- Each row must contain 1-9 with no repeats\n- Each column must contain 1-9 with no repeats\n- Each 3x3 sub-box must contain 1-9 with no repeats\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    board = [\n        [\"5\",\"3\",\".\",\".\",\"7\",\".\",\".\",\".\",\".\"],\n        [\"6\",\".\",\".\",\"1\",\"9\",\"5\",\".\",\".\",\".\"],\n        [\".\",\"9\",\"8\",\".\",\".\",\".\",\".\",\"6\",\".\"],\n        [\"8\",\".\",\".\",\".\",\"6\",\".\",\".\",\".\",\"3\"],\n        [\"4\",\".\",\".\",\"8\",\".\",\"3\",\".\",\".\",\"1\"],\n        [\"7\",\".\",\".\",\".\",\"2\",\".\",\".\",\".\",\"6\"],\n        [\".\",\"6\",\".\",\".\",\".\",\".\",\"2\",\"8\",\".\"],\n        [\".\",\".\",\".\",\"4\",\"1\",\"9\",\".\",\".\",\"5\"],\n        [\".\",\".\",\".\",\".\",\"8\",\".\",\".\",\"7\",\"9\"]\n    ]\n    solve_sudoku(board)\n\n    # Verify solution\n    for row in board:\n        assert sorted(row) == ['1','2','3','4','5','6','7','8','9']\n    for col in range(9):\n        assert sorted([board[row][col] for row in range(9)]) == ['1','2','3','4','5','6','7','8','9']\n\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h26-word-ladder",
+    "name": "Word Ladder (BFS)",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "bfs",
+      "graph"
+    ],
+    "prompt": "Find the shortest transformation sequence from beginWord to endWord.\n\ndef ladder_length(begin_word: str, end_word: str, word_list: list) -> int:\n    # Only one letter can be changed at a time\n    # Each transformed word must exist in word_list\n    # Return 0 if no transformation sequence exists\n    # Return the number of words in the shortest sequence\n\nExample:\n- ladder_length(\"hit\", \"cog\", [\"hot\",\"dot\",\"dog\",\"lot\",\"log\",\"cog\"]) → 5\n  (hit → hot → dot → dog → cog)\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert ladder_length(\"hit\", \"cog\", [\"hot\",\"dot\",\"dog\",\"lot\",\"log\",\"cog\"]) == 5\n    assert ladder_length(\"hit\", \"cog\", [\"hot\",\"dot\",\"dog\",\"lot\",\"log\"]) == 0\n    assert ladder_length(\"a\", \"c\", [\"a\",\"b\",\"c\"]) == 2\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h27-max-profit-cooldown",
+    "name": "Stock with Cooldown",
+    "category": "code-generation",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "dynamic-programming",
+      "state-machine"
+    ],
+    "prompt": "Find the maximum profit with cooldown after selling.\n\ndef max_profit(prices: list) -> int:\n    # You may complete as many transactions as you like\n    # After you sell, you cannot buy on the next day (cooldown)\n    # Return maximum profit\n\nExample:\n- max_profit([1,2,3,0,2]) → 3 (buy@1, sell@3, cooldown, buy@0, sell@2)\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert max_profit([1,2,3,0,2]) == 3\n    assert max_profit([1]) == 0\n    assert max_profit([1,2,4]) == 3\n    assert max_profit([2,1,4]) == 3\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h28-partition-equal-sum",
+    "name": "Partition Equal Subset Sum",
+    "category": "code-generation",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "dynamic-programming",
+      "subset-sum"
+    ],
+    "prompt": "Determine if array can be partitioned into two subsets with equal sum.\n\ndef can_partition(nums: list) -> bool:\n    # Return True if can be partitioned, False otherwise\n\nExample:\n- can_partition([1,5,11,5]) → True ([1,5,5] and [11])\n- can_partition([1,2,3,5]) → False\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert can_partition([1,5,11,5]) == True\n    assert can_partition([1,2,3,5]) == False\n    assert can_partition([1,1]) == True\n    assert can_partition([1,2,5]) == False\n    assert can_partition([100]) == False\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h29-longest-increasing-path",
+    "name": "Longest Increasing Path in Matrix",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "dfs",
+      "memoization",
+      "matrix"
+    ],
+    "prompt": "Find the longest increasing path in a matrix.\n\ndef longest_increasing_path(matrix: list) -> int:\n    # You can move in 4 directions (up, down, left, right)\n    # Cannot move diagonally or outside boundary\n    # Return the length of the longest increasing path\n\nExample:\nmatrix = [[9,9,4],[6,6,8],[2,1,1]] → 4 (1→2→6→9)\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert longest_increasing_path([[9,9,4],[6,6,8],[2,1,1]]) == 4\n    assert longest_increasing_path([[3,4,5],[3,2,6],[2,2,1]]) == 4\n    assert longest_increasing_path([[1]]) == 1\n    assert longest_increasing_path([[1,2]]) == 2\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h30-decode-ways",
+    "name": "Decode Ways",
+    "category": "code-generation",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "dynamic-programming",
+      "string"
+    ],
+    "prompt": "Count the number of ways to decode a string.\n\ndef num_decodings(s: str) -> int:\n    # 'A' -> \"1\", 'B' -> \"2\", ..., 'Z' -> \"26\"\n    # Return the number of ways to decode the string\n    # Leading zeros are invalid (e.g., \"06\" cannot be decoded)\n\nExample:\n- num_decodings(\"12\") → 2 (\"AB\" or \"L\")\n- num_decodings(\"226\") → 3 (\"BZ\", \"VF\", \"BBF\")\n- num_decodings(\"06\") → 0\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert num_decodings(\"12\") == 2\n    assert num_decodings(\"226\") == 3\n    assert num_decodings(\"06\") == 0\n    assert num_decodings(\"11106\") == 2\n    assert num_decodings(\"10\") == 1\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h31-maximal-rectangle",
+    "name": "Maximal Rectangle",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "stack",
+      "dynamic-programming",
+      "matrix"
+    ],
+    "prompt": "Find the largest rectangle containing only 1's in a binary matrix.\n\ndef maximal_rectangle(matrix: list) -> int:\n    # matrix[i][j] is '0' or '1'\n    # Return the area of the largest rectangle\n\nExample:\nmatrix = [\n  [\"1\",\"0\",\"1\",\"0\",\"0\"],\n  [\"1\",\"0\",\"1\",\"1\",\"1\"],\n  [\"1\",\"1\",\"1\",\"1\",\"1\"],\n  [\"1\",\"0\",\"0\",\"1\",\"0\"]\n] → 6\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    matrix1 = [[\"1\",\"0\",\"1\",\"0\",\"0\"],[\"1\",\"0\",\"1\",\"1\",\"1\"],[\"1\",\"1\",\"1\",\"1\",\"1\"],[\"1\",\"0\",\"0\",\"1\",\"0\"]]\n    assert maximal_rectangle(matrix1) == 6\n    assert maximal_rectangle([[\"0\"]]) == 0\n    assert maximal_rectangle([[\"1\"]]) == 1\n    assert maximal_rectangle([]) == 0\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h32-edit-distance",
+    "name": "Edit Distance (Levenshtein)",
+    "category": "code-generation",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "dynamic-programming",
+      "string"
+    ],
+    "prompt": "Find the minimum number of operations to convert word1 to word2.\n\ndef min_distance(word1: str, word2: str) -> int:\n    # Operations: insert, delete, replace (each costs 1)\n    # Return minimum number of operations\n\nExample:\n- min_distance(\"horse\", \"ros\") → 3\n- min_distance(\"intention\", \"execution\") → 5\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert min_distance(\"horse\", \"ros\") == 3\n    assert min_distance(\"intention\", \"execution\") == 5\n    assert min_distance(\"\", \"\") == 0\n    assert min_distance(\"a\", \"\") == 1\n    assert min_distance(\"\", \"a\") == 1\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h33-word-search-ii",
+    "name": "Word Search II (Trie + DFS)",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "trie",
+      "dfs",
+      "backtracking"
+    ],
+    "prompt": "Find all words from dictionary that exist in the board.\n\ndef find_words(board: list, words: list) -> list:\n    # board[i][j] is a lowercase letter\n    # Words can be constructed from adjacent cells (horizontal/vertical)\n    # Same cell cannot be used twice in one word\n    # Return list of found words (any order)\n\nExample:\nboard = [[\"o\",\"a\",\"a\",\"n\"],[\"e\",\"t\",\"a\",\"e\"],[\"i\",\"h\",\"k\",\"r\"],[\"i\",\"f\",\"l\",\"v\"]]\nwords = [\"oath\",\"pea\",\"eat\",\"rain\"]\n→ [\"eat\",\"oath\"]\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    board = [[\"o\",\"a\",\"a\",\"n\"],[\"e\",\"t\",\"a\",\"e\"],[\"i\",\"h\",\"k\",\"r\"],[\"i\",\"f\",\"l\",\"v\"]]\n    result = find_words(board, [\"oath\",\"pea\",\"eat\",\"rain\"])\n    assert sorted(result) == [\"eat\",\"oath\"]\n    assert find_words([[\"a\"]], [\"a\"]) == [\"a\"]\n    assert find_words([[\"a\"]], [\"b\"]) == []\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h34-meeting-rooms-ii",
+    "name": "Meeting Rooms II",
+    "category": "code-generation",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "heap",
+      "sorting",
+      "intervals"
+    ],
+    "prompt": "Find the minimum number of conference rooms required.\n\ndef min_meeting_rooms(intervals: list) -> int:\n    # intervals[i] = [start, end]\n    # Return minimum number of rooms needed\n\nExample:\n- min_meeting_rooms([[0,30],[5,10],[15,20]]) → 2\n- min_meeting_rooms([[7,10],[2,4]]) → 1\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert min_meeting_rooms([[0,30],[5,10],[15,20]]) == 2\n    assert min_meeting_rooms([[7,10],[2,4]]) == 1\n    assert min_meeting_rooms([]) == 0\n    assert min_meeting_rooms([[1,5],[2,3],[3,4],[4,6]]) == 2\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h35-basic-calculator",
+    "name": "Basic Calculator",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "stack",
+      "recursion",
+      "parsing"
+    ],
+    "prompt": "Implement a basic calculator to evaluate a string expression.\n\ndef calculate(s: str) -> int:\n    # s contains digits, '+', '-', '(', ')', and spaces\n    # Evaluate the expression and return the result\n\nExample:\n- calculate(\"1 + 1\") → 2\n- calculate(\" 2-1 + 2 \") → 3\n- calculate(\"(1+(4+5+2)-3)+(6+8)\") → 23\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert calculate(\"1 + 1\") == 2\n    assert calculate(\" 2-1 + 2 \") == 3\n    assert calculate(\"(1+(4+5+2)-3)+(6+8)\") == 23\n    assert calculate(\"- (3 + (4 + 5))\") == -12\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h36-serialize-deserialize-bst",
+    "name": "Serialize and Deserialize BST",
+    "category": "code-generation",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "tree",
+      "serialization",
+      "bst"
+    ],
+    "prompt": "Design an algorithm to serialize and deserialize a binary search tree.\n\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\nclass Codec:\n    def serialize(self, root: TreeNode) -> str:\n        # Encode tree to a string\n        pass\n\n    def deserialize(self, data: str) -> TreeNode:\n        # Decode string back to tree\n        pass\n\nReturn ONLY the TreeNode class and Codec class, no explanations.",
+    "test_code": "\ndef test():\n    codec = Codec()\n    # Test 1: [2,1,3]\n    root = TreeNode(2, TreeNode(1), TreeNode(3))\n    s = codec.serialize(root)\n    new_root = codec.deserialize(s)\n    assert new_root.val == 2\n    assert new_root.left.val == 1\n    assert new_root.right.val == 3\n\n    # Test 2: empty tree\n    assert codec.deserialize(codec.serialize(None)) is None\n\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h37-lfu-cache",
+    "name": "LFU Cache",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "design",
+      "hash-map",
+      "linked-list"
+    ],
+    "prompt": "Design and implement a Least Frequently Used (LFU) cache.\n\nclass LFUCache:\n    def __init__(self, capacity: int):\n        pass\n\n    def get(self, key: int) -> int:\n        # Return value if exists, else -1\n        # Increases frequency count\n        pass\n\n    def put(self, key: int, value: int) -> None:\n        # Insert or update\n        # Evict least frequently used when at capacity\n        # If tie, evict least recently used among them\n        pass\n\nReturn ONLY the class code, no explanations.",
+    "test_code": "\ndef test():\n    cache = LFUCache(2)\n    cache.put(1, 1)\n    cache.put(2, 2)\n    assert cache.get(1) == 1\n    cache.put(3, 3)  # evicts key 2\n    assert cache.get(2) == -1\n    assert cache.get(3) == 3\n    cache.put(4, 4)  # evicts key 1\n    assert cache.get(1) == -1\n    assert cache.get(3) == 3\n    assert cache.get(4) == 4\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h38-median-sorted-arrays",
+    "name": "Median of Two Sorted Arrays",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "binary-search",
+      "divide-conquer"
+    ],
+    "prompt": "Find the median of two sorted arrays.\n\ndef find_median_sorted_arrays(nums1: list, nums2: list) -> float:\n    # Overall runtime should be O(log(m+n))\n    # Return the median as a float\n\nExample:\n- find_median_sorted_arrays([1,3], [2]) → 2.0\n- find_median_sorted_arrays([1,2], [3,4]) → 2.5\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert find_median_sorted_arrays([1,3], [2]) == 2.0\n    assert find_median_sorted_arrays([1,2], [3,4]) == 2.5\n    assert find_median_sorted_arrays([0,0], [0,0]) == 0.0\n    assert find_median_sorted_arrays([], [1]) == 1.0\n    assert find_median_sorted_arrays([2], []) == 2.0\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h39-n-queens",
+    "name": "N-Queens",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "backtracking",
+      "recursion"
+    ],
+    "prompt": "Solve the n-queens puzzle.\n\ndef solve_n_queens(n: int) -> list:\n    # Return all distinct solutions\n    # Each solution is a list of strings\n    # 'Q' = queen, '.' = empty\n\nExample for n=4:\n[[\".Q..\",\"...Q\",\"Q...\",\"..Q.\"],\n [\"..Q.\",\"Q...\",\"...Q\",\".Q..\"]]\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    result = solve_n_queens(4)\n    assert len(result) == 2\n    assert solve_n_queens(1) == [[\"Q\"]]\n    assert len(solve_n_queens(8)) == 92\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h40-burst-balloons",
+    "name": "Burst Balloons",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "dynamic-programming",
+      "interval-dp"
+    ],
+    "prompt": "Find the maximum coins by bursting balloons wisely.\n\ndef max_coins(nums: list) -> int:\n    # nums[i] = coins on balloon i\n    # Bursting balloon i gives nums[i-1] * nums[i] * nums[i+1] coins\n    # Adjacent balloons become neighbors after burst\n    # Assume nums[-1] = nums[n] = 1 (virtual balloons)\n    # Return maximum coins you can collect\n\nExample:\n- max_coins([3,1,5,8]) → 167\n  (burst 1: 3*1*5=15, burst 5: 3*5*8=120, burst 3: 1*3*8=24, burst 8: 1*8*1=8)\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert max_coins([3,1,5,8]) == 167\n    assert max_coins([1,5]) == 10\n    assert max_coins([]) == 0\n    assert max_coins([7]) == 7\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h41-max-sliding-window",
+    "name": "Sliding Window Maximum",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "deque",
+      "sliding-window"
+    ],
+    "prompt": "Find the maximum in each sliding window of size k.\n\ndef max_sliding_window(nums: list, k: int) -> list:\n    # Return list of maximums for each window position\n\nExample:\n- max_sliding_window([1,3,-1,-3,5,3,6,7], 3) → [3,3,5,5,6,7]\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert max_sliding_window([1,3,-1,-3,5,3,6,7], 3) == [3,3,5,5,6,7]\n    assert max_sliding_window([1], 1) == [1]\n    assert max_sliding_window([1,-1], 1) == [1,-1]\n    assert max_sliding_window([9,11], 2) == [11]\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h42-longest-valid-parens",
+    "name": "Longest Valid Parentheses",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "dynamic-programming",
+      "stack"
+    ],
+    "prompt": "Find the length of the longest valid parentheses substring.\n\ndef longest_valid_parentheses(s: str) -> int:\n    # s contains only '(' and ')'\n    # Return length of longest valid (well-formed) parentheses substring\n\nExample:\n- longest_valid_parentheses(\"(()\") → 2\n- longest_valid_parentheses(\")()())\") → 4\n- longest_valid_parentheses(\"\") → 0\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert longest_valid_parentheses(\"(()\") == 2\n    assert longest_valid_parentheses(\")()())\") == 4\n    assert longest_valid_parentheses(\"\") == 0\n    assert longest_valid_parentheses(\"()(()\") == 2\n    assert longest_valid_parentheses(\"(()())\") == 6\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h43-wildcard-matching",
+    "name": "Wildcard Matching",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "dynamic-programming",
+      "greedy"
+    ],
+    "prompt": "Implement wildcard pattern matching with '?' and '*'.\n\ndef is_match(s: str, p: str) -> bool:\n    # '?' matches any single character\n    # '*' matches any sequence of characters (including empty)\n\nExample:\n- is_match(\"aa\", \"a\") → False\n- is_match(\"aa\", \"*\") → True\n- is_match(\"cb\", \"?a\") → False\n- is_match(\"adceb\", \"*a*b\") → True\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert is_match(\"aa\", \"a\") == False\n    assert is_match(\"aa\", \"*\") == True\n    assert is_match(\"cb\", \"?a\") == False\n    assert is_match(\"adceb\", \"*a*b\") == True\n    assert is_match(\"acdcb\", \"a*c?b\") == False\n    assert is_match(\"\", \"*\") == True\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h44-concatenated-words",
+    "name": "Concatenated Words",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "trie",
+      "dynamic-programming",
+      "dfs"
+    ],
+    "prompt": "Find all concatenated words in a list.\n\ndef find_all_concatenated_words(words: list) -> list:\n    # A concatenated word is formed by concatenating at least two shorter words from the list\n    # Return all concatenated words\n\nExample:\n- [\"cat\",\"cats\",\"catsdogcats\",\"dog\",\"dogcatsdog\",\"hippopotamuses\",\"rat\",\"ratcatdogcat\"]\n  → [\"catsdogcats\",\"dogcatsdog\",\"ratcatdogcat\"]\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    words = [\"cat\",\"cats\",\"catsdogcats\",\"dog\",\"dogcatsdog\",\"hippopotamuses\",\"rat\",\"ratcatdogcat\"]\n    result = find_all_concatenated_words(words)\n    assert sorted(result) == [\"catsdogcats\",\"dogcatsdog\",\"ratcatdogcat\"]\n    assert find_all_concatenated_words([\"cat\",\"dog\",\"catdog\"]) == [\"catdog\"]\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h45-count-smaller",
+    "name": "Count of Smaller Numbers After Self",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "merge-sort",
+      "binary-indexed-tree"
+    ],
+    "prompt": "Count the number of smaller elements to the right of each element.\n\ndef count_smaller(nums: list) -> list:\n    # counts[i] = number of elements to the right of nums[i] that are smaller\n\nExample:\n- count_smaller([5,2,6,1]) → [2,1,1,0]\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert count_smaller([5,2,6,1]) == [2,1,1,0]\n    assert count_smaller([-1]) == [0]\n    assert count_smaller([-1,-1]) == [0,0]\n    assert count_smaller([2,0,1]) == [2,0,0]\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h46-reverse-pairs",
+    "name": "Reverse Pairs",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "merge-sort",
+      "binary-indexed-tree"
+    ],
+    "prompt": "Count reverse pairs where nums[i] > 2*nums[j] and i < j.\n\ndef reverse_pairs(nums: list) -> int:\n    # Return the number of important reverse pairs\n\nExample:\n- reverse_pairs([1,3,2,3,1]) → 2\n- reverse_pairs([2,4,3,5,1]) → 3\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert reverse_pairs([1,3,2,3,1]) == 2\n    assert reverse_pairs([2,4,3,5,1]) == 3\n    assert reverse_pairs([]) == 0\n    assert reverse_pairs([1]) == 0\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h47-count-range-sum",
+    "name": "Count of Range Sum",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "merge-sort",
+      "prefix-sum"
+    ],
+    "prompt": "Count the number of range sums within [lower, upper].\n\ndef count_range_sum(nums: list, lower: int, upper: int) -> int:\n    # Return count of range sums S(i,j) where lower <= S(i,j) <= upper\n    # S(i,j) = sum(nums[i:j+1])\n\nExample:\n- count_range_sum([-2,5,-1], -2, 2) → 3\n  (ranges: [-2], [-1], [-2,5,-1])\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert count_range_sum([-2,5,-1], -2, 2) == 3\n    assert count_range_sum([0], 0, 0) == 1\n    assert count_range_sum([0,0], 0, 0) == 3\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h48-palindrome-pairs",
+    "name": "Palindrome Pairs",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "trie",
+      "hash-map",
+      "string"
+    ],
+    "prompt": "Find all pairs of indices (i,j) where words[i] + words[j] is a palindrome.\n\ndef palindrome_pairs(words: list) -> list:\n    # Return list of [i,j] pairs where concatenation is palindrome\n    # i != j\n\nExample:\n- palindrome_pairs([\"abcd\",\"dcba\",\"lls\",\"s\",\"sssll\"])\n  → [[0,1],[1,0],[3,2],[2,4]]\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    result = palindrome_pairs([\"abcd\",\"dcba\",\"lls\",\"s\",\"sssll\"])\n    expected = [[0,1],[1,0],[3,2],[2,4]]\n    assert sorted(result) == sorted(expected)\n    assert palindrome_pairs([\"bat\",\"tab\",\"cat\"]) == [[0,1],[1,0]]\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h49-text-justification",
+    "name": "Text Justification",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "string",
+      "simulation"
+    ],
+    "prompt": "Format text with full justification.\n\ndef full_justify(words: list, max_width: int) -> list:\n    # Pack words into lines with exactly max_width characters\n    # Extra spaces distributed left to right\n    # Last line is left-justified\n\nExample:\n- full_justify([\"This\",\"is\",\"an\",\"example\",\"of\",\"text\",\"justification.\"], 16)\n  → [\"This    is    an\", \"example  of text\", \"justification.  \"]\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    result = full_justify([\"This\",\"is\",\"an\",\"example\",\"of\",\"text\",\"justification.\"], 16)\n    assert result == [\"This    is    an\", \"example  of text\", \"justification.  \"]\n\n    result2 = full_justify([\"What\",\"must\",\"be\",\"acknowledgment\",\"shall\",\"be\"], 16)\n    assert result2 == [\"What   must   be\", \"acknowledgment  \", \"shall be        \"]\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h50-remove-invalid-parens",
+    "name": "Remove Invalid Parentheses",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "bfs",
+      "backtracking"
+    ],
+    "prompt": "Remove minimum number of invalid parentheses to make input valid.\n\ndef remove_invalid_parentheses(s: str) -> list:\n    # Return all possible valid strings with minimum removals\n    # String may contain letters other than parentheses\n\nExample:\n- remove_invalid_parentheses(\"()())()\") → [\"(())()\",\"()()()\"]\n- remove_invalid_parentheses(\"(a)())()\") → [\"(a())()\",\"(a)()()\"]\n- remove_invalid_parentheses(\")(\") → [\"\"]\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert sorted(remove_invalid_parentheses(\"()())()\")) == [\"(())()\",\"()()()\"]\n    assert sorted(remove_invalid_parentheses(\"(a)())()\"))==[\"(a())()\",\"(a)()()\"]\n    assert remove_invalid_parentheses(\")(\") == [\"\"]\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h51-expression-add-ops",
+    "name": "Expression Add Operators",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "backtracking",
+      "math"
+    ],
+    "prompt": "Add operators +, -, * between digits to reach target.\n\ndef add_operators(num: str, target: int) -> list:\n    # Return all expressions that evaluate to target\n    # No leading zeros in operands (except \"0\" itself)\n\nExample:\n- add_operators(\"123\", 6) → [\"1+2+3\", \"1*2*3\"]\n- add_operators(\"232\", 8) → [\"2*3+2\", \"2+3*2\"]\n- add_operators(\"00\", 0) → [\"0+0\", \"0-0\", \"0*0\"]\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert sorted(add_operators(\"123\", 6)) == sorted([\"1+2+3\", \"1*2*3\"])\n    assert sorted(add_operators(\"232\", 8)) == sorted([\"2*3+2\", \"2+3*2\"])\n    assert sorted(add_operators(\"00\", 0)) == sorted([\"0+0\", \"0-0\", \"0*0\"])\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h52-distinct-subsequences",
+    "name": "Distinct Subsequences",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "dynamic-programming",
+      "string"
+    ],
+    "prompt": "Count distinct subsequences of s that equal t.\n\ndef num_distinct(s: str, t: str) -> int:\n    # Return the number of distinct subsequences\n\nExample:\n- num_distinct(\"rabbbit\", \"rabbit\") → 3\n- num_distinct(\"babgbag\", \"bag\") → 5\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert num_distinct(\"rabbbit\", \"rabbit\") == 3\n    assert num_distinct(\"babgbag\", \"bag\") == 5\n    assert num_distinct(\"\", \"a\") == 0\n    assert num_distinct(\"a\", \"\") == 1\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h53-interleaving-string",
+    "name": "Interleaving String",
+    "category": "code-generation",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "dynamic-programming",
+      "string"
+    ],
+    "prompt": "Check if s3 is formed by interleaving s1 and s2.\n\ndef is_interleave(s1: str, s2: str, s3: str) -> bool:\n    # Return True if s3 is an interleaving of s1 and s2\n\nExample:\n- is_interleave(\"aabcc\", \"dbbca\", \"aadbbcbcac\") → True\n- is_interleave(\"aabcc\", \"dbbca\", \"aadbbbaccc\") → False\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert is_interleave(\"aabcc\", \"dbbca\", \"aadbbcbcac\") == True\n    assert is_interleave(\"aabcc\", \"dbbca\", \"aadbbbaccc\") == False\n    assert is_interleave(\"\", \"\", \"\") == True\n    assert is_interleave(\"a\", \"\", \"a\") == True\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h54-scramble-string",
+    "name": "Scramble String",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "dynamic-programming",
+      "recursion"
+    ],
+    "prompt": "Check if s2 is a scrambled string of s1.\n\ndef is_scramble(s1: str, s2: str) -> bool:\n    # A string can be scrambled by:\n    # 1. Split it into two non-empty parts\n    # 2. Optionally swap them\n    # 3. Recursively scramble each part\n\nExample:\n- is_scramble(\"great\", \"rgeat\") → True\n- is_scramble(\"abcde\", \"caebd\") → False\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert is_scramble(\"great\", \"rgeat\") == True\n    assert is_scramble(\"abcde\", \"caebd\") == False\n    assert is_scramble(\"a\", \"a\") == True\n    assert is_scramble(\"ab\", \"ba\") == True\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h55-recover-bst",
+    "name": "Recover Binary Search Tree",
+    "category": "code-generation",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "tree",
+      "dfs"
+    ],
+    "prompt": "Recover BST where exactly two nodes are swapped.\n\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef recover_tree(root: TreeNode) -> None:\n    # Two nodes were swapped by mistake\n    # Recover the tree in-place without changing structure\n\nReturn ONLY the TreeNode class and function code, no explanations.",
+    "test_code": "\ndef test():\n    # Tree: [1,3,null,null,2] - 3 and 1 are swapped\n    root = TreeNode(1, TreeNode(3, None, TreeNode(2)), None)\n    recover_tree(root)\n    assert root.val == 3\n    assert root.left.val == 1\n\n    # Tree: [3,1,4,null,null,2] - 2 and 3 are swapped\n    root2 = TreeNode(3, TreeNode(1), TreeNode(4, TreeNode(2), None))\n    recover_tree(root2)\n    assert root2.val == 2\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h56-max-points-line",
+    "name": "Max Points on a Line",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "math",
+      "hash-map",
+      "geometry"
+    ],
+    "prompt": "Find maximum number of points on a line.\n\ndef max_points(points: list) -> int:\n    # points[i] = [x, y]\n    # Return max points that lie on the same straight line\n\nExample:\n- max_points([[1,1],[2,2],[3,3]]) → 3\n- max_points([[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]) → 4\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert max_points([[1,1],[2,2],[3,3]]) == 3\n    assert max_points([[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]) == 4\n    assert max_points([[0,0]]) == 1\n    assert max_points([[0,0],[1,1]]) == 2\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h57-split-array-largest",
+    "name": "Split Array Largest Sum",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "binary-search",
+      "dynamic-programming"
+    ],
+    "prompt": "Split array into k subarrays to minimize the largest sum.\n\ndef split_array(nums: list, k: int) -> int:\n    # Split nums into k non-empty contiguous subarrays\n    # Minimize the largest sum among k subarrays\n    # Return this minimized largest sum\n\nExample:\n- split_array([7,2,5,10,8], 2) → 18 ([7,2,5] and [10,8])\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert split_array([7,2,5,10,8], 2) == 18\n    assert split_array([1,2,3,4,5], 2) == 9\n    assert split_array([1,4,4], 3) == 4\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h58-swim-rising-water",
+    "name": "Swim in Rising Water",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "binary-search",
+      "dfs",
+      "union-find"
+    ],
+    "prompt": "Find minimum time to swim from top-left to bottom-right.\n\ndef swim_in_water(grid: list) -> int:\n    # grid[i][j] = elevation at time t\n    # At time t, can swim if both current and adjacent cell <= t\n    # Return minimum time to reach bottom-right from top-left\n\nExample:\n- swim_in_water([[0,2],[1,3]]) → 3\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert swim_in_water([[0,2],[1,3]]) == 3\n    assert swim_in_water([[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]]) == 16\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h59-shortest-path-obstacle",
+    "name": "Shortest Path with Obstacle Elimination",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "bfs",
+      "graph"
+    ],
+    "prompt": "Find shortest path with at most k obstacle eliminations.\n\ndef shortest_path(grid: list, k: int) -> int:\n    # grid[i][j] = 0 (empty) or 1 (obstacle)\n    # Can eliminate at most k obstacles\n    # Return shortest path from (0,0) to (m-1,n-1), or -1 if impossible\n\nExample:\n- shortest_path([[0,0,0],[1,1,0],[0,0,0],[0,1,1],[0,0,0]], 1) → 6\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert shortest_path([[0,0,0],[1,1,0],[0,0,0],[0,1,1],[0,0,0]], 1) == 6\n    assert shortest_path([[0,1,1],[1,1,1],[1,0,0]], 1) == -1\n    assert shortest_path([[0]], 0) == 0\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h60-cut-off-trees",
+    "name": "Cut Off Trees for Golf Event",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "bfs",
+      "sorting"
+    ],
+    "prompt": "Cut trees in order of height, find minimum steps.\n\ndef cut_off_tree(forest: list) -> int:\n    # forest[i][j] = 0 (blocked), 1 (empty), >1 (tree with height)\n    # Must cut trees in order from shortest to tallest\n    # Return total minimum steps, or -1 if impossible\n\nExample:\n- cut_off_tree([[1,2,3],[0,0,4],[7,6,5]]) → 6\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert cut_off_tree([[1,2,3],[0,0,4],[7,6,5]]) == 6\n    assert cut_off_tree([[1,2,3],[0,0,0],[7,6,5]]) == -1\n    assert cut_off_tree([[2,3,4],[0,0,5],[8,7,6]]) == 6\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h61-super-egg-drop",
+    "name": "Super Egg Drop",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "dynamic-programming",
+      "binary-search"
+    ],
+    "prompt": "Find minimum moves to determine critical floor with k eggs and n floors.\n\ndef super_egg_drop(k: int, n: int) -> int:\n    # k eggs, n floors\n    # Return minimum number of moves to find critical floor\n    # Egg breaks if dropped from critical floor or above\n\nExample:\n- super_egg_drop(1, 2) → 2\n- super_egg_drop(2, 6) → 3\n- super_egg_drop(3, 14) → 4\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert super_egg_drop(1, 2) == 2\n    assert super_egg_drop(2, 6) == 3\n    assert super_egg_drop(3, 14) == 4\n    assert super_egg_drop(2, 100) == 14\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h62-minimum-cost-tickets",
+    "name": "Minimum Cost For Tickets",
+    "category": "code-generation",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "dynamic-programming"
+    ],
+    "prompt": "Find minimum cost to travel on all given days.\n\ndef mincost_tickets(days: list, costs: list) -> int:\n    # days: list of travel days (sorted)\n    # costs: [1-day pass, 7-day pass, 30-day pass]\n    # Return minimum cost\n\nExample:\n- mincost_tickets([1,4,6,7,8,20], [2,7,15]) → 11\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert mincost_tickets([1,4,6,7,8,20], [2,7,15]) == 11\n    assert mincost_tickets([1,2,3,4,5,6,7,8,9,10,30,31], [2,7,15]) == 17\n    assert mincost_tickets([1], [2,7,15]) == 2\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h63-longest-dup-substring",
+    "name": "Longest Duplicate Substring",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "binary-search",
+      "rabin-karp",
+      "suffix-array"
+    ],
+    "prompt": "Find the longest duplicate substring.\n\ndef longest_dup_substring(s: str) -> str:\n    # Return any longest substring that occurs more than once\n    # Return \"\" if no such substring\n\nExample:\n- longest_dup_substring(\"banana\") → \"ana\"\n- longest_dup_substring(\"abcd\") → \"\"\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    result = longest_dup_substring(\"banana\")\n    assert result in [\"ana\"]\n    assert longest_dup_substring(\"abcd\") == \"\"\n    assert longest_dup_substring(\"aa\") == \"a\"\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h64-minimum-cost-merge-stones",
+    "name": "Minimum Cost to Merge Stones",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "dynamic-programming",
+      "interval-dp"
+    ],
+    "prompt": "Merge stones with minimum cost, k at a time.\n\ndef merge_stones(stones: list, k: int) -> int:\n    # Each move: merge k consecutive piles into one, cost = sum of stones\n    # Return minimum cost to merge all into one pile, or -1 if impossible\n\nExample:\n- merge_stones([3,2,4,1], 2) → 20\n- merge_stones([3,2,4,1], 3) → -1\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert merge_stones([3,2,4,1], 2) == 20\n    assert merge_stones([3,2,4,1], 3) == -1\n    assert merge_stones([3,5,1,2,6], 3) == 25\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h65-smallest-range",
+    "name": "Smallest Range Covering Elements from K Lists",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "heap",
+      "sliding-window"
+    ],
+    "prompt": "Find smallest range that includes at least one number from each list.\n\ndef smallest_range(nums: list) -> list:\n    # nums: list of k sorted lists\n    # Return [a, b] - smallest range containing at least one from each\n\nExample:\n- smallest_range([[4,10,15,24,26],[0,9,12,20],[5,18,22,30]]) → [20,24]\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert smallest_range([[4,10,15,24,26],[0,9,12,20],[5,18,22,30]]) == [20,24]\n    assert smallest_range([[1,2,3],[1,2,3],[1,2,3]]) == [1,1]\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h66-frog-jump",
+    "name": "Frog Jump",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "dynamic-programming",
+      "hash-map"
+    ],
+    "prompt": "Check if frog can cross the river.\n\ndef can_cross(stones: list) -> bool:\n    # stones: positions of stones (sorted, first is 0)\n    # Frog starts at stone 0, last jump was 1 unit\n    # If last jump was k, next can be k-1, k, or k+1 (must be positive)\n    # Return True if frog can reach the last stone\n\nExample:\n- can_cross([0,1,3,5,6,8,12,17]) → True\n- can_cross([0,1,2,3,4,8,9,11]) → False\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert can_cross([0,1,3,5,6,8,12,17]) == True\n    assert can_cross([0,1,2,3,4,8,9,11]) == False\n    assert can_cross([0,1]) == True\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h67-valid-number",
+    "name": "Valid Number",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "string",
+      "state-machine"
+    ],
+    "prompt": "Check if string is a valid number.\n\ndef is_number(s: str) -> bool:\n    # Valid: \"2\", \"0089\", \"-0.1\", \"+3.14\", \"4.\", \"-.9\", \"2e10\", \"-90E3\", \"3e+7\", \"+6e-1\", \"53.5e93\", \"-123.456e789\"\n    # Invalid: \"abc\", \"1a\", \"1e\", \"e3\", \"99e2.5\", \"--6\", \"-+3\", \"95a54e53\"\n\nExample:\n- is_number(\"0\") → True\n- is_number(\"e\") → False\n- is_number(\".\") → False\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert is_number(\"0\") == True\n    assert is_number(\"e\") == False\n    assert is_number(\".\") == False\n    assert is_number(\"2e10\") == True\n    assert is_number(\"-90E3\") == True\n    assert is_number(\"53.5e93\") == True\n    assert is_number(\"99e2.5\") == False\n    assert is_number(\"--6\") == False\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h68-russian-doll",
+    "name": "Russian Doll Envelopes",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "binary-search",
+      "dynamic-programming",
+      "lis"
+    ],
+    "prompt": "Find max number of envelopes you can Russian doll.\n\ndef max_envelopes(envelopes: list) -> int:\n    # envelopes[i] = [width, height]\n    # Envelope A fits in B if A.width < B.width AND A.height < B.height\n    # Return maximum number of envelopes you can nest\n\nExample:\n- max_envelopes([[5,4],[6,4],[6,7],[2,3]]) → 3 ([2,3] → [5,4] → [6,7])\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert max_envelopes([[5,4],[6,4],[6,7],[2,3]]) == 3\n    assert max_envelopes([[1,1],[1,1],[1,1]]) == 1\n    assert max_envelopes([[1,2],[2,3],[3,4],[4,5]]) == 4\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h69-integer-replacement",
+    "name": "Integer to English Words",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "string",
+      "recursion"
+    ],
+    "prompt": "Convert integer to English words.\n\ndef number_to_words(num: int) -> str:\n    # 0 <= num <= 2^31 - 1\n    # Return English representation\n\nExample:\n- number_to_words(123) → \"One Hundred Twenty Three\"\n- number_to_words(12345) → \"Twelve Thousand Three Hundred Forty Five\"\n- number_to_words(1234567) → \"One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven\"\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert number_to_words(123) == \"One Hundred Twenty Three\"\n    assert number_to_words(12345) == \"Twelve Thousand Three Hundred Forty Five\"\n    assert number_to_words(0) == \"Zero\"\n    assert number_to_words(1000000) == \"One Million\"\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h70-minimum-window-seq",
+    "name": "Minimum Window Subsequence",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "dynamic-programming",
+      "two-pointers"
+    ],
+    "prompt": "Find minimum window in s1 containing s2 as subsequence.\n\ndef min_window(s1: str, s2: str) -> str:\n    # Return minimum substring of s1 that contains s2 as subsequence\n    # Return \"\" if no such window\n\nExample:\n- min_window(\"abcdebdde\", \"bde\") → \"bcde\"\n- min_window(\"jmeqksfrsdcmsiwvaovztaqenprpvnbstl\", \"u\") → \"\"\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert min_window(\"abcdebdde\", \"bde\") == \"bcde\"\n    assert min_window(\"jmeqksfrsdcmsiwvaovztaqenprpvnbstl\", \"u\") == \"\"\n    assert min_window(\"cnhczmccqouqadqtmjjzl\", \"cm\") == \"cnhczmcc\"[:4] or min_window(\"cnhczmccqouqadqtmjjzl\", \"cm\") == \"cm\"\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h71-strange-printer",
+    "name": "Strange Printer",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "dynamic-programming",
+      "interval-dp"
+    ],
+    "prompt": "Find minimum turns to print string with strange printer.\n\ndef strange_printer(s: str) -> int:\n    # Printer can only print same character sequence\n    # Each turn prints consecutive same characters (can cover existing)\n    # Return minimum turns to print s\n\nExample:\n- strange_printer(\"aaabbb\") → 2\n- strange_printer(\"aba\") → 2\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert strange_printer(\"aaabbb\") == 2\n    assert strange_printer(\"aba\") == 2\n    assert strange_printer(\"a\") == 1\n    assert strange_printer(\"\") == 0\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h72-max-sum-rectangle",
+    "name": "Max Sum of Rectangle No Larger Than K",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "binary-search",
+      "prefix-sum",
+      "sorted-container"
+    ],
+    "prompt": "Find max sum rectangle no larger than k.\n\ndef max_sum_submatrix(matrix: list, k: int) -> int:\n    # Return max sum of a rectangle no larger than k\n    # Guaranteed at least one rectangle exists with sum <= k\n\nExample:\n- max_sum_submatrix([[1,0,1],[0,-2,3]], 2) → 2\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert max_sum_submatrix([[1,0,1],[0,-2,3]], 2) == 2\n    assert max_sum_submatrix([[2,2,-1]], 3) == 3\n    assert max_sum_submatrix([[2,2,-1]], 0) == -1\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h73-cherry-pickup",
+    "name": "Cherry Pickup",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "dynamic-programming"
+    ],
+    "prompt": "Pick max cherries going to and from (n-1,n-1).\n\ndef cherry_pickup(grid: list) -> int:\n    # grid[i][j] = 0 (empty), 1 (cherry), -1 (thorn)\n    # Go from (0,0) to (n-1,n-1) then back\n    # Pick cherries (only once), can't cross thorns\n    # Return maximum cherries, or 0 if impossible\n\nExample:\n- cherry_pickup([[0,1,-1],[1,0,-1],[1,1,1]]) → 5\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert cherry_pickup([[0,1,-1],[1,0,-1],[1,1,1]]) == 5\n    assert cherry_pickup([[1,1,-1],[1,-1,1],[-1,1,1]]) == 0\n    assert cherry_pickup([[1]]) == 1\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h74-making-a-large-island",
+    "name": "Making A Large Island",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "dfs",
+      "union-find"
+    ],
+    "prompt": "Find largest island after changing one 0 to 1.\n\ndef largest_island(grid: list) -> int:\n    # grid[i][j] = 0 (water) or 1 (land)\n    # Change at most one 0 to 1\n    # Return size of largest island\n\nExample:\n- largest_island([[1,0],[0,1]]) → 3\n- largest_island([[1,1],[1,0]]) → 4\n- largest_island([[1,1],[1,1]]) → 4\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert largest_island([[1,0],[0,1]]) == 3\n    assert largest_island([[1,1],[1,0]]) == 4\n    assert largest_island([[1,1],[1,1]]) == 4\n    assert largest_island([[0,0],[0,0]]) == 1\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h75-critical-connections",
+    "name": "Critical Connections in a Network",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "graph",
+      "tarjan",
+      "bridge"
+    ],
+    "prompt": "Find all critical connections (bridges) in network.\n\ndef critical_connections(n: int, connections: list) -> list:\n    # n servers, connections[i] = [a, b]\n    # Return all critical connections (removing it disconnects some server)\n\nExample:\n- critical_connections(4, [[0,1],[1,2],[2,0],[1,3]]) → [[1,3]]\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    result = critical_connections(4, [[0,1],[1,2],[2,0],[1,3]])\n    assert sorted([sorted(x) for x in result]) == [[1,3]]\n\n    result2 = critical_connections(2, [[0,1]])\n    assert sorted([sorted(x) for x in result2]) == [[0,1]]\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h76-find-k-pairs-smallest-sums",
+    "name": "Find K Pairs with Smallest Sums",
+    "category": "code-generation",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "heap",
+      "sorting"
+    ],
+    "prompt": "Find k pairs with smallest sums from two sorted arrays.\n\ndef k_smallest_pairs(nums1: list, nums2: list, k: int) -> list:\n    # Return k pairs [u, v] with smallest sums (u from nums1, v from nums2)\n    # Both arrays are sorted ascending\n\nExample:\n- k_smallest_pairs([1,7,11], [2,4,6], 3) → [[1,2],[1,4],[1,6]]\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert k_smallest_pairs([1,7,11], [2,4,6], 3) == [[1,2],[1,4],[1,6]]\n    assert k_smallest_pairs([1,1,2], [1,2,3], 2) == [[1,1],[1,1]]\n    assert k_smallest_pairs([1,2], [3], 3) == [[1,3],[2,3]]\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h77-employee-free-time",
+    "name": "Employee Free Time",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "heap",
+      "intervals"
+    ],
+    "prompt": "Find common free time for all employees.\n\ndef employee_free_time(schedule: list) -> list:\n    # schedule[i] = list of [start, end] intervals for employee i\n    # Return list of [start, end] common free intervals\n    # Each employee works at least one interval\n\nExample:\n- employee_free_time([[[1,2],[5,6]],[[1,3]],[[4,10]]]) → [[3,4]]\n- employee_free_time([[[1,3],[6,7]],[[2,4]],[[2,5],[9,12]]]) → [[5,6],[7,9]]\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert employee_free_time([[[1,2],[5,6]],[[1,3]],[[4,10]]]) == [[3,4]]\n    assert employee_free_time([[[1,3],[6,7]],[[2,4]],[[2,5],[9,12]]]) == [[5,6],[7,9]]\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h78-shortest-palindrome",
+    "name": "Shortest Palindrome",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "kmp",
+      "string"
+    ],
+    "prompt": "Find shortest palindrome by adding characters in front.\n\ndef shortest_palindrome(s: str) -> str:\n    # Add characters in front of s to make it palindrome\n    # Return the shortest such palindrome\n\nExample:\n- shortest_palindrome(\"aacecaaa\") → \"aaacecaaa\"\n- shortest_palindrome(\"abcd\") → \"dcbabcd\"\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert shortest_palindrome(\"aacecaaa\") == \"aaacecaaa\"\n    assert shortest_palindrome(\"abcd\") == \"dcbabcd\"\n    assert shortest_palindrome(\"\") == \"\"\n    assert shortest_palindrome(\"a\") == \"a\"\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h79-patching-array",
+    "name": "Patching Array",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "greedy",
+      "math"
+    ],
+    "prompt": "Find minimum patches to cover all sums 1 to n.\n\ndef min_patches(nums: list, n: int) -> int:\n    # nums is sorted\n    # Find minimum numbers to add so that any sum in [1, n] is reachable\n\nExample:\n- min_patches([1,3], 6) → 1 (add 2)\n- min_patches([1,5,10], 20) → 2\n- min_patches([1,2,2], 5) → 0\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert min_patches([1,3], 6) == 1\n    assert min_patches([1,5,10], 20) == 2\n    assert min_patches([1,2,2], 5) == 0\n    assert min_patches([], 7) == 3\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h80-kth-smallest-prime-fraction",
+    "name": "K-th Smallest Prime Fraction",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "binary-search",
+      "heap"
+    ],
+    "prompt": "Find k-th smallest fraction from sorted prime array.\n\ndef kth_smallest_prime_fraction(arr: list, k: int) -> list:\n    # arr: sorted primes with 1\n    # Consider all fractions arr[i]/arr[j] where i < j\n    # Return [arr[i], arr[j]] for k-th smallest fraction\n\nExample:\n- kth_smallest_prime_fraction([1,2,3,5], 3) → [2,5]\n  (fractions: 1/5, 1/3, 2/5, 1/2, 3/5, 2/3 → 3rd is 2/5)\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert kth_smallest_prime_fraction([1,2,3,5], 3) == [2,5]\n    assert kth_smallest_prime_fraction([1,7], 1) == [1,7]\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h81-k-inverse-pairs",
+    "name": "K Inverse Pairs Array",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "dynamic-programming"
+    ],
+    "prompt": "Count permutations of 1 to n with exactly k inverse pairs.\n\ndef k_inverse_pairs(n: int, k: int) -> int:\n    # Inverse pair: (i, j) where i < j and nums[i] > nums[j]\n    # Return count of permutations with exactly k inverse pairs\n    # Return result modulo 10^9 + 7\n\nExample:\n- k_inverse_pairs(3, 0) → 1 ([1,2,3])\n- k_inverse_pairs(3, 1) → 2 ([1,3,2], [2,1,3])\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert k_inverse_pairs(3, 0) == 1\n    assert k_inverse_pairs(3, 1) == 2\n    assert k_inverse_pairs(1000, 1000) == 663677020\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h82-number-of-atoms",
+    "name": "Number of Atoms",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "stack",
+      "parsing",
+      "hash-map"
+    ],
+    "prompt": "Parse chemical formula and count atoms.\n\ndef count_of_atoms(formula: str) -> str:\n    # Parse formula and return atoms in sorted order with counts\n    # If count is 1, omit it\n\nExample:\n- count_of_atoms(\"H2O\") → \"H2O\"\n- count_of_atoms(\"Mg(OH)2\") → \"H2MgO2\"\n- count_of_atoms(\"K4(ON(SO3)2)2\") → \"K4N2O14S4\"\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert count_of_atoms(\"H2O\") == \"H2O\"\n    assert count_of_atoms(\"Mg(OH)2\") == \"H2MgO2\"\n    assert count_of_atoms(\"K4(ON(SO3)2)2\") == \"K4N2O14S4\"\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h83-minimum-interval",
+    "name": "Minimum Interval to Include Each Query",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "sorting",
+      "heap"
+    ],
+    "prompt": "Find smallest interval containing each query point.\n\ndef min_interval(intervals: list, queries: list) -> list:\n    # intervals[i] = [left, right]\n    # For each query, find size of smallest interval containing it\n    # Return -1 if no interval contains the query\n\nExample:\n- min_interval([[1,4],[2,4],[3,6],[4,4]], [2,3,4,5]) → [3,3,1,4]\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert min_interval([[1,4],[2,4],[3,6],[4,4]], [2,3,4,5]) == [3,3,1,4]\n    assert min_interval([[2,3],[2,5],[1,8],[20,25]], [2,19,5,22]) == [2,-1,4,6]\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h84-max-product-subarray",
+    "name": "Maximum Product Subarray",
+    "category": "code-generation",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "dynamic-programming"
+    ],
+    "prompt": "Find contiguous subarray with largest product.\n\ndef max_product(nums: list) -> int:\n    # Return the largest product of a contiguous subarray\n\nExample:\n- max_product([2,3,-2,4]) → 6 ([2,3])\n- max_product([-2,0,-1]) → 0\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert max_product([2,3,-2,4]) == 6\n    assert max_product([-2,0,-1]) == 0\n    assert max_product([-2]) == -2\n    assert max_product([-2,3,-4]) == 24\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h85-largest-component-by-factor",
+    "name": "Largest Component Size by Common Factor",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "union-find",
+      "math"
+    ],
+    "prompt": "Find largest connected component where nodes share common factor.\n\ndef largest_component_size(nums: list) -> int:\n    # Two numbers are connected if they share a common factor > 1\n    # Return size of largest connected component\n\nExample:\n- largest_component_size([4,6,15,35]) → 4\n- largest_component_size([20,50,9,63]) → 2\n- largest_component_size([2,3,6,7,4,12,21,39]) → 8\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert largest_component_size([4,6,15,35]) == 4\n    assert largest_component_size([20,50,9,63]) == 2\n    assert largest_component_size([2,3,6,7,4,12,21,39]) == 8\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h86-bus-routes",
+    "name": "Bus Routes",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "bfs",
+      "graph"
+    ],
+    "prompt": "Find minimum buses to reach target.\n\ndef num_buses_to_destination(routes: list, source: int, target: int) -> int:\n    # routes[i] = stops for bus i (cyclic)\n    # Return minimum buses needed to go from source to target\n    # Return -1 if impossible\n\nExample:\n- num_buses_to_destination([[1,2,7],[3,6,7]], 1, 6) → 2\n- num_buses_to_destination([[7,12],[4,5,15],[6],[15,19],[9,12,13]], 15, 12) → -1\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert num_buses_to_destination([[1,2,7],[3,6,7]], 1, 6) == 2\n    assert num_buses_to_destination([[7,12],[4,5,15],[6],[15,19],[9,12,13]], 15, 12) == -1\n    assert num_buses_to_destination([[1,2],[2,3]], 1, 1) == 0\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h87-reconstruct-itinerary",
+    "name": "Reconstruct Itinerary",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "dfs",
+      "eulerian-path"
+    ],
+    "prompt": "Reconstruct itinerary from tickets.\n\ndef find_itinerary(tickets: list) -> list:\n    # tickets[i] = [from, to]\n    # Start from \"JFK\", use all tickets exactly once\n    # Return lexicographically smallest itinerary\n\nExample:\n- find_itinerary([[\"MUC\",\"LHR\"],[\"JFK\",\"MUC\"],[\"SFO\",\"SJC\"],[\"LHR\",\"SFO\"]])\n  → [\"JFK\",\"MUC\",\"LHR\",\"SFO\",\"SJC\"]\n- find_itinerary([[\"JFK\",\"SFO\"],[\"JFK\",\"ATL\"],[\"SFO\",\"ATL\"],[\"ATL\",\"JFK\"],[\"ATL\",\"SFO\"]])\n  → [\"JFK\",\"ATL\",\"JFK\",\"SFO\",\"ATL\",\"SFO\"]\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert find_itinerary([[\"MUC\",\"LHR\"],[\"JFK\",\"MUC\"],[\"SFO\",\"SJC\"],[\"LHR\",\"SFO\"]]) == [\"JFK\",\"MUC\",\"LHR\",\"SFO\",\"SJC\"]\n    assert find_itinerary([[\"JFK\",\"SFO\"],[\"JFK\",\"ATL\"],[\"SFO\",\"ATL\"],[\"ATL\",\"JFK\"],[\"ATL\",\"SFO\"]]) == [\"JFK\",\"ATL\",\"JFK\",\"SFO\",\"ATL\",\"SFO\"]\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h88-binary-tree-cameras",
+    "name": "Binary Tree Cameras",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "tree",
+      "dfs",
+      "greedy"
+    ],
+    "prompt": "Find minimum cameras to monitor all nodes.\n\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef min_camera_cover(root: TreeNode) -> int:\n    # Each camera monitors parent, itself, and children\n    # Return minimum cameras needed\n\nReturn ONLY the TreeNode class and function code, no explanations.",
+    "test_code": "\ndef test():\n    # [0,0,null,0,0]\n    root = TreeNode(0, TreeNode(0, TreeNode(0), TreeNode(0)), None)\n    assert min_camera_cover(root) == 1\n\n    # [0,0,null,0,null,0,null,null,0]\n    root2 = TreeNode(0, TreeNode(0, TreeNode(0, None, TreeNode(0, None, TreeNode(0))), None), None)\n    assert min_camera_cover(root2) == 2\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h89-count-different-palindromes",
+    "name": "Count Different Palindromic Subsequences",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "dynamic-programming"
+    ],
+    "prompt": "Count distinct non-empty palindromic subsequences.\n\ndef count_palindromic_subsequences(s: str) -> int:\n    # s contains only 'a', 'b', 'c', 'd'\n    # Return count of distinct palindromic subsequences modulo 10^9 + 7\n\nExample:\n- count_palindromic_subsequences(\"bccb\") → 6 (b, c, bb, cc, bcb, bccb)\n- count_palindromic_subsequences(\"abcdabcdabcdabcdabcdabcdabcdabcddcbadcbadcbadcbadcbadcbadcbadcba\") → 104860361\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert count_palindromic_subsequences(\"bccb\") == 6\n    assert count_palindromic_subsequences(\"a\") == 1\n    assert count_palindromic_subsequences(\"aaa\") == 3\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h90-trapping-rain-water-2d",
+    "name": "Trapping Rain Water II",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "heap",
+      "bfs"
+    ],
+    "prompt": "Calculate water trapped in 2D elevation map.\n\ndef trap_rain_water(height_map: list) -> int:\n    # height_map[i][j] = elevation at (i, j)\n    # Return total water volume trapped\n\nExample:\n- trap_rain_water([[1,4,3,1,3,2],[3,2,1,3,2,4],[2,3,3,2,3,1]]) → 4\n- trap_rain_water([[3,3,3,3,3],[3,2,2,2,3],[3,2,1,2,3],[3,2,2,2,3],[3,3,3,3,3]]) → 10\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert trap_rain_water([[1,4,3,1,3,2],[3,2,1,3,2,4],[2,3,3,2,3,1]]) == 4\n    assert trap_rain_water([[3,3,3,3,3],[3,2,2,2,3],[3,2,1,2,3],[3,2,2,2,3],[3,3,3,3,3]]) == 10\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h91-longest-consecutive",
+    "name": "Longest Consecutive Sequence",
+    "category": "code-generation",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "hash-set",
+      "union-find"
+    ],
+    "prompt": "Find longest consecutive elements sequence in O(n) time.\n\ndef longest_consecutive(nums: list) -> int:\n    # Return length of longest consecutive sequence\n    # Must run in O(n) time\n\nExample:\n- longest_consecutive([100,4,200,1,3,2]) → 4 (1,2,3,4)\n- longest_consecutive([0,3,7,2,5,8,4,6,0,1]) → 9\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert longest_consecutive([100,4,200,1,3,2]) == 4\n    assert longest_consecutive([0,3,7,2,5,8,4,6,0,1]) == 9\n    assert longest_consecutive([]) == 0\n    assert longest_consecutive([1]) == 1\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h92-find-median-large-file",
+    "name": "Find Median from Large File",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "binary-search",
+      "statistics"
+    ],
+    "prompt": "Find median of integers when they don't fit in memory.\n\ndef find_median_large(reader) -> float:\n    # reader.read_chunk() returns list of integers or None if exhausted\n    # reader can be iterated multiple times\n    # Find median without loading all data at once\n\nNote: For testing, we'll provide a simple reader class.\n\nclass ChunkReader:\n    def __init__(self, data, chunk_size=100):\n        self.data = data\n        self.chunk_size = chunk_size\n        self.pos = 0\n\n    def read_chunk(self):\n        if self.pos >= len(self.data):\n            return None\n        chunk = self.data[self.pos:self.pos + self.chunk_size]\n        self.pos += self.chunk_size\n        return chunk\n\n    def reset(self):\n        self.pos = 0\n\nReturn ONLY the ChunkReader class and function code, no explanations.",
+    "test_code": "\ndef test():\n    reader = ChunkReader([3,1,4,1,5,9,2,6,5,3,5])\n    median = find_median_large(reader)\n    assert median == 4.0  # sorted: [1,1,2,3,3,4,5,5,5,6,9]\n\n    reader2 = ChunkReader([1,2,3,4])\n    assert find_median_large(reader2) == 2.5\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h93-maximal-square",
+    "name": "Maximal Square",
+    "category": "code-generation",
+    "difficulty": "medium",
+    "language": "python",
+    "tags": [
+      "dynamic-programming"
+    ],
+    "prompt": "Find largest square containing only 1's.\n\ndef maximal_square(matrix: list) -> int:\n    # matrix[i][j] is '0' or '1'\n    # Return area of largest square\n\nExample:\n- matrix = [[\"1\",\"0\",\"1\",\"0\",\"0\"],[\"1\",\"0\",\"1\",\"1\",\"1\"],[\"1\",\"1\",\"1\",\"1\",\"1\"],[\"1\",\"0\",\"0\",\"1\",\"0\"]]\n  → 4\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert maximal_square([[\"1\",\"0\",\"1\",\"0\",\"0\"],[\"1\",\"0\",\"1\",\"1\",\"1\"],[\"1\",\"1\",\"1\",\"1\",\"1\"],[\"1\",\"0\",\"0\",\"1\",\"0\"]]) == 4\n    assert maximal_square([[\"0\",\"1\"],[\"1\",\"0\"]]) == 1\n    assert maximal_square([[\"0\"]]) == 0\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h94-dungeon-game",
+    "name": "Dungeon Game",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "dynamic-programming"
+    ],
+    "prompt": "Find minimum initial health to reach princess.\n\ndef calculate_minimum_hp(dungeon: list) -> int:\n    # dungeon[i][j] = health change (can be negative)\n    # Knight starts at (0,0), princess at (m-1,n-1)\n    # Can only move right or down\n    # Health must always be >= 1\n    # Return minimum initial health\n\nExample:\n- dungeon = [[-2,-3,3],[-5,-10,1],[10,30,-5]] → 7\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert calculate_minimum_hp([[-2,-3,3],[-5,-10,1],[10,30,-5]]) == 7\n    assert calculate_minimum_hp([[0]]) == 1\n    assert calculate_minimum_hp([[100]]) == 1\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h95-create-max-number",
+    "name": "Create Maximum Number",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "stack",
+      "greedy"
+    ],
+    "prompt": "Create maximum number of length k from two arrays.\n\ndef max_number(nums1: list, nums2: list, k: int) -> list:\n    # Pick digits from nums1 and nums2 to form max number of length k\n    # Must preserve relative order from each array\n\nExample:\n- max_number([3,4,6,5], [9,1,2,5,8,3], 5) → [9,8,6,5,3]\n- max_number([6,7], [6,0,4], 5) → [6,7,6,0,4]\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert max_number([3,4,6,5], [9,1,2,5,8,3], 5) == [9,8,6,5,3]\n    assert max_number([6,7], [6,0,4], 5) == [6,7,6,0,4]\n    assert max_number([3,9], [8,9], 3) == [9,8,9]\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h96-minimum-cost-hire-workers",
+    "name": "Minimum Cost to Hire K Workers",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "heap",
+      "greedy",
+      "sorting"
+    ],
+    "prompt": "Find minimum cost to hire exactly k workers.\n\ndef mincost_to_hire_workers(quality: list, wage: list, k: int) -> float:\n    # Worker i has quality[i] and minimum wage[i]\n    # Pay proportional to quality, at least minimum wage\n    # All workers in group paid same ratio\n    # Return minimum cost to hire exactly k workers\n\nExample:\n- mincost_to_hire_workers([10,20,5], [70,50,30], 2) → 105.0\n- mincost_to_hire_workers([3,1,10,10,1], [4,8,2,2,7], 3) → 30.66667\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert abs(mincost_to_hire_workers([10,20,5], [70,50,30], 2) - 105.0) < 0.00001\n    assert abs(mincost_to_hire_workers([3,1,10,10,1], [4,8,2,2,7], 3) - 30.66667) < 0.001\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h97-valid-permutations-di",
+    "name": "Valid Permutations for DI Sequence",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "dynamic-programming"
+    ],
+    "prompt": "Count valid permutations matching DI sequence.\n\ndef num_perms_di_sequence(s: str) -> int:\n    # s contains 'D' (decrease) and 'I' (increase)\n    # Count permutations of [0, 1, ..., n] matching s\n    # Return count modulo 10^9 + 7\n\nExample:\n- num_perms_di_sequence(\"DID\") → 5\n  (0132, 0231, 0321, 1032, 1320)\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert num_perms_di_sequence(\"DID\") == 5\n    assert num_perms_di_sequence(\"D\") == 1\n    assert num_perms_di_sequence(\"I\") == 1\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h98-orderly-queue",
+    "name": "Orderly Queue",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "string",
+      "math"
+    ],
+    "prompt": "Find lexicographically smallest string after moves.\n\ndef orderly_queue(s: str, k: int) -> str:\n    # Move: take one of first k chars and append to end\n    # Return lexicographically smallest string\n\nExample:\n- orderly_queue(\"cba\", 1) → \"acb\"\n- orderly_queue(\"baaca\", 3) → \"aaabc\"\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert orderly_queue(\"cba\", 1) == \"acb\"\n    assert orderly_queue(\"baaca\", 3) == \"aaabc\"\n    assert orderly_queue(\"abc\", 2) == \"abc\"\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h99-sum-of-distances-in-tree",
+    "name": "Sum of Distances in Tree",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "tree",
+      "dfs"
+    ],
+    "prompt": "Find sum of distances from each node to all others.\n\ndef sum_of_distances_in_tree(n: int, edges: list) -> list:\n    # Return array where result[i] = sum of distances from i to all nodes\n\nExample:\n- sum_of_distances_in_tree(6, [[0,1],[0,2],[2,3],[2,4],[2,5]]) → [8,12,6,10,10,10]\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    assert sum_of_distances_in_tree(6, [[0,1],[0,2],[2,3],[2,4],[2,5]]) == [8,12,6,10,10,10]\n    assert sum_of_distances_in_tree(1, []) == [0]\n    assert sum_of_distances_in_tree(2, [[1,0]]) == [1,1]\n    print(\"PASS\")\ntest()\n"
+  },
+  {
+    "id": "h100-shortest-superstring",
+    "name": "Shortest Superstring",
+    "category": "code-generation",
+    "difficulty": "hard",
+    "language": "python",
+    "tags": [
+      "dynamic-programming",
+      "bitmask",
+      "tsp"
+    ],
+    "prompt": "Find shortest string containing all given strings.\n\ndef shortest_superstring(words: list) -> str:\n    # Return shortest string containing all words as substrings\n    # words are distinct and no word is substring of another\n\nExample:\n- shortest_superstring([\"alex\",\"loves\",\"leetcode\"]) → \"alexlovesleetcode\"\n- shortest_superstring([\"catg\",\"ctaagt\",\"gcta\",\"ttca\",\"atgcatc\"]) → \"gctaagttcatgcatc\"\n\nReturn ONLY the function code, no explanations.",
+    "test_code": "\ndef test():\n    result = shortest_superstring([\"alex\",\"loves\",\"leetcode\"])\n    assert \"alex\" in result and \"loves\" in result and \"leetcode\" in result\n    assert len(result) <= 17\n\n    result2 = shortest_superstring([\"catg\",\"ctaagt\",\"gcta\",\"ttca\",\"atgcatc\"])\n    for word in [\"catg\",\"ctaagt\",\"gcta\",\"ttca\",\"atgcatc\"]:\n        assert word in result2\n    print(\"PASS\")\ntest()\n"
+  }
+]
