@@ -10,6 +10,20 @@
 
 **[查看基准测试结果](https://careti.ai/zh/benchmark)**
 
+## 快速开始
+
+```bash
+# 克隆仓库
+git clone https://github.com/caretive-ai/careti-benchmark.git
+cd careti-benchmark
+
+# 验证数据完整性
+python3 scripts/verify-data.py
+
+# 示例用法
+python3 scripts/example-usage.py
+```
+
 ## 为什么要做这个基准测试?
 
 ### 现有基准测试的局限性
@@ -33,7 +47,7 @@ Careti: 问题 → 智能体 → 代码 → 测试 → [错误反馈] → 重试
 
 | 排名 | 模型 | 首次成功率 | 最终通过率 | 平均尝试 | 成本 |
 |-----|------|-----------|-----------|----------|------|
-| #1 | Gemini 2.5 Flash | 62-67% | **98%** | 1.36-1.44 | $0.09-0.13 |
+| #1 | Gemini 2.5 Flash | 70-92% | **98%** | 1.11-1.44 | $0.05-0.13 |
 | #2 | GLM-4.7 | 89-92% | **97-98%** | 1.11-1.15 | $0.18 |
 | #3 | Gemini 3 Pro (Preview) | 66-67% | **92-93%** | 1.53-1.57 | $0.60 |
 | #4 | Solar Pro2 | 61-64% | **81-86%** | 1.82-1.87 | $0.75-0.87 |
@@ -67,34 +81,65 @@ Careti: 问题 → 智能体 → 代码 → 测试 → [错误反馈] → 重试
 
 ```json
 {
-  "problem_id": "he000-has_close_elements",
+  "problem_id": "h01-longest-substring",
   "model": "Gemini 2.5 Flash",
   "success": true,
-  "attempts": 1,
-  "first_attempt_success": true,
-  "total_time_ms": 5348,
-  "cost_usd": 0.00018,
-  "input_tokens": 161,
-  "output_tokens": 264,
+  "attempts": 2,
+  "first_attempt_success": false,
+  "total_time_ms": 9599,
+  "cost_usd": 0.00094,
+  "input_tokens": 4330,
+  "output_tokens": 484,
   "prompt_mode": "careti",
   "termination_reason": "success",
-  "attempt_history": [...]
+  "attempt_history": [
+    {
+      "attempt": 1,
+      "success": false,
+      "latency_ms": 6229,
+      "error": "SyntaxError: invalid syntax"
+    },
+    {
+      "attempt": 2,
+      "success": true,
+      "latency_ms": 3370
+    }
+  ]
 }
 ```
 
 ### 查询原始问题
 
-HumanEval问题可以从Hugging Face数据集查询:
+Hard Suite问题包含在`problems/hard-suite.json`中:
 
 ```python
-from datasets import load_dataset
+import json
+import urllib.request
 
-ds = load_dataset("openai/openai_humaneval")
-problem = ds["test"][0]  # he000 → 第0题
+# 下载问题
+url = "https://raw.githubusercontent.com/caretive-ai/careti-benchmark/main/problems/hard-suite.json"
+problems = json.loads(urllib.request.urlopen(url).read())
+
+# 按ID查找问题
+problem = next(p for p in problems if p["id"] == "h01-longest-substring")
 print(problem["prompt"])
+print(problem["test_code"])
 ```
 
-**Hugging Face**: [openai/openai_humaneval](https://huggingface.co/datasets/openai/openai_humaneval)
+## 文件结构
+
+```
+problems/
+  hard-suite.json       # 100道题目（含提示词和测试代码）
+
+results/2026-02-hard-suite/
+  results.json          # 2100条独立测试结果
+  summary.json          # 按模型汇总统计
+
+scripts/
+  verify-data.py        # 数据完整性验证
+  example-usage.py      # 示例分析脚本
+```
 
 ## 许可证
 

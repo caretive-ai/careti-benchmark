@@ -10,6 +10,20 @@
 
 **[벤치마크 결과 보기](https://careti.ai/ko/benchmark)**
 
+## 빠른 시작
+
+```bash
+# 저장소 클론
+git clone https://github.com/caretive-ai/careti-benchmark.git
+cd careti-benchmark
+
+# 데이터 무결성 검증
+python3 scripts/verify-data.py
+
+# 예제 사용법
+python3 scripts/example-usage.py
+```
+
 ## 왜 만들었나?
 
 ### 기존 벤치마크의 한계
@@ -33,7 +47,7 @@ Careti: 문제 → 에이전트 → 코드 → 테스트 → [에러 피드백] 
 
 | 순위 | 모델 | 1회 성공률 | 최종 통과율 | 평균 시도 | 비용 |
 |-----|------|-----------|-----------|----------|------|
-| #1 | Gemini 2.5 Flash | 62-67% | **98%** | 1.36-1.44 | $0.09-0.13 |
+| #1 | Gemini 2.5 Flash | 70-92% | **98%** | 1.11-1.44 | $0.05-0.13 |
 | #2 | GLM-4.7 | 89-92% | **97-98%** | 1.11-1.15 | $0.18 |
 | #3 | Gemini 3 Pro (Preview) | 66-67% | **92-93%** | 1.53-1.57 | $0.60 |
 | #4 | Solar Pro2 | 61-64% | **81-86%** | 1.82-1.87 | $0.75-0.87 |
@@ -67,34 +81,65 @@ Careti: 문제 → 에이전트 → 코드 → 테스트 → [에러 피드백] 
 
 ```json
 {
-  "problem_id": "he000-has_close_elements",
+  "problem_id": "h01-longest-substring",
   "model": "Gemini 2.5 Flash",
   "success": true,
-  "attempts": 1,
-  "first_attempt_success": true,
-  "total_time_ms": 5348,
-  "cost_usd": 0.00018,
-  "input_tokens": 161,
-  "output_tokens": 264,
+  "attempts": 2,
+  "first_attempt_success": false,
+  "total_time_ms": 9599,
+  "cost_usd": 0.00094,
+  "input_tokens": 4330,
+  "output_tokens": 484,
   "prompt_mode": "careti",
   "termination_reason": "success",
-  "attempt_history": [...]
+  "attempt_history": [
+    {
+      "attempt": 1,
+      "success": false,
+      "latency_ms": 6229,
+      "error": "SyntaxError: invalid syntax"
+    },
+    {
+      "attempt": 2,
+      "success": true,
+      "latency_ms": 3370
+    }
+  ]
 }
 ```
 
 ### 문제 원본 조회
 
-HumanEval 문제는 Hugging Face 데이터셋에서 조회할 수 있습니다:
+Hard Suite 문제는 `problems/hard-suite.json`에 포함되어 있습니다:
 
 ```python
-from datasets import load_dataset
+import json
+import urllib.request
 
-ds = load_dataset("openai/openai_humaneval")
-problem = ds["test"][0]  # he000 → 0번 문제
+# 문제 다운로드
+url = "https://raw.githubusercontent.com/caretive-ai/careti-benchmark/main/problems/hard-suite.json"
+problems = json.loads(urllib.request.urlopen(url).read())
+
+# ID로 문제 찾기
+problem = next(p for p in problems if p["id"] == "h01-longest-substring")
 print(problem["prompt"])
+print(problem["test_code"])
 ```
 
-**Hugging Face**: [openai/openai_humaneval](https://huggingface.co/datasets/openai/openai_humaneval)
+## 파일 구조
+
+```
+problems/
+  hard-suite.json       # 100개 문제 (프롬프트, 테스트 코드 포함)
+
+results/2026-02-hard-suite/
+  results.json          # 2100개 개별 테스트 결과
+  summary.json          # 모델별 집계 통계
+
+scripts/
+  verify-data.py        # 데이터 무결성 검증
+  example-usage.py      # 예제 분석 스크립트
+```
 
 ## 라이선스
 
