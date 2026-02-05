@@ -526,9 +526,7 @@
     "passed": 98,
     "pass_rate": 98,
     "first_attempt_pass_rate": 92,
-    "first_attempt_avg_latency_ms": 17615.065217391304,
-    "total_cost_usd": 0.04967205,
-    "total_time_ms": 2322246,
+    "total_cost_usd": 0.0497,
     "prompt_mode": "careti"
   }
 ]
